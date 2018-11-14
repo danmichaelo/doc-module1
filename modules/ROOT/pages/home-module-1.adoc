@@ -1,16 +1,1865 @@
-= Basic Inline Text Formatting
-ifndef::env-site,env-github[]
-include::_attributes.adoc[]
-endif::[]
-// Settings
-:idprefix:
-:idseparator: -
-:example-caption!:
+*SOMMAIRE*
 
-You can add the following inline styles to your content:
+1.  [[rappel-des-concepts]]
+= Rappel des concepts :
+a.  [[définitions]]
+== Définitions :
+a.  P.I.M. :
 
-* Bold
-* Italic
-* Monospace
-* Highlight
+Le '**P**roduct **I**nformation **M**anagement' ou gestion de l'information produit est une technologie de gestion centralisée de l’information sur un produit en vue d'assurer une distribution efficace et précise de cette information vers d’autres systèmes ou supports informatiques (documents, tableurs…)
 
+Le PIM englobe les environnements "Espace de travail" et "Référentiel" dans la suite PLIM.
+
+a.  P.L.M. :
+
+Le '**P**roduct **L**ifecycle **M**anagement' ou gestion du cycle de vie du produit est le nom du domaine d'activité dont le but est de créer et maintenir les produits tout au long de leur cycle de vie, depuis l'établissement du cahier des charges du produit et des services associés jusqu'à la fin de vie.
+
+Le PLM correspond à l'environnement "Projets R&D" dans la suite PLIM.
+
+a.  Environnements :
+
+Contiennent des "Objets", encore appelés "Documents" pouvant être organisés et classés dans des "Répertoires". Il s'agit donc du niveau le plus haut dans la structure de données du PLIM. Le pendant des "environnements" dans le monde réel peut être assimilé à des armoires contenant des classeurs, eux-mêmes remplis de documents.
+
+ 
+
+Plus concrètement, il existe aujourd'hui 3 environnements dans l'outil :
+
+ 
+
+* Environnement "Projets R&D" : correspond à un environnement de conception et d’élaboration de recettes au stade « laboratoire ». Ici l’objectif est de travailler sans contraintes pour aller vite et laisser une totale liberté dans l’imagination de nouvelles recettes.
+
+ 
+
+* Environnement "Espace de travail" : correspond à un environnement de développements des articles (MP, PF…) post-conception. L’objectif est ainsi de récupérer quelques éléments viables de l’environnement de conception afin de les développer et de les finaliser avant publication en complétant notamment des informations non disponibles en mode projet.
+
+ 
+
+* Environnement "Référentiel": correspond à un environnement ‘fermé’ dans lequel les éléments ne sont plus modifiables, il s’agit des recettes ou des articles définitifs, validés avant transfert en production. Il est cependant possible de copier une recette de référence pour la retravailler dans un environnement de travail, c’est tout l’intérêt du PLIM de pouvoir réutiliser et retravailler les éléments existants
+a.  Répertoires :
+
+Les répertoires correspondent à des regroupements "d'objets" ou "documents" au sein d'un "environnement", il s'agit du second niveau dans la structure de données du PLM. Ils peuvent également être hiérarchisés pour former des niveaux différents de classement des "objets". Le pendant des répertoires dans le monde réel peut être assimilé à des classeurs regroupant un ensemble de documents.
+
+ 
+
+Plus concrètement, il est possible de se servir des répertoires pour regrouper les 'matières premières", les 'emballages", les 'produits finis' ou encore les 'documents internes', les 'documents externes'… Les "objets" ne sont pour autant pas cloisonnés entre eux, mais la mise en place de répertoires permet d'organiser et de clarifier la lecture pour les utilisateurs.
+
+a.  Documents :
+
+Il s'agit du niveau le plus bas de stockage des informations. Chaque "document" ou "objet" correspond à un enregistrement dans lequel sont stockées différentes informations séparées dans des champs. Les documents PLIM correspondent à un regroupement de données comme peuvent l’être des documents dans le monde réel, et peuvent ainsi être regroupés dans des classeurs, eux-mêmes rangés dans des armoires.
+
+ 
+
+Il existe dans la suite PLIM plusieurs types de "Documents" définis par défaut dans l'outil, chacun disposant de champs communs ou spécifiques en fonction de leur type, comme par exemple :
+
+ 
+
+Les *ingrédients* (**PI**) : Correspondent aux éléments constitutifs d'une matière première. Il s'agit des composants d'une matière première, servant de base aux calculs des listes d'ingrédients et étiquetages. Les ingrédients sont déclarés par le fournisseur et ne sont pas référencés par l'entreprise en tant qu'élément à part entière.
+
+ 
+
+Les *matières premières* (**RM**) : Correspondent aux matières premières achetées par l'entreprise et entrant dans la composition des produits finis. Contrairement aux ingrédients que l'entreprise ne gère pas directement.
+
+ 
+
+Les *emballages* (**PK**) : Correspondent à l'ensemble des articles de type emballage ou packaging (film, carton, étui….)
+
+ 
+
+Les *ressources* (**RS**) : Correspondent aux ressources et moyens mis en œuvre pour élaborer les recettes (main d'œuvre, énergie, process)
+
+ 
+
+Les *produits finis* (**EP**) : Correspondent aux produits élaborés, pouvant être composés de matières premières, emballages, ressources ou encore d'autres produits finis.
+
+**NB** : Il existe par ailleurs de nombreux autres types de documents dans l’application dont vous trouverez la définition dans la documentation utilisateur. Les documents listés ci-dessus sont décrits à titre de rappel.
+
+1.  [[administration-plim]]
+= Administration ‘PLIM’ :
+a.  [[introduction]]
+== Introduction :
+
+Ce premier chapitre traite de l’ensemble des fonctionnalités d’administration et de supervision de l’application PLIM paramétrée. Elle ne traite donc pas des aspects modélisation ou paramétrage de la structure (écrans, Workflows…), ce sujet étant couvert dans le second chapitre (Administration ‘STUDIO’).
+
+[[gestion-des-utilisateurs-et-des-licences]]
+== Gestion des utilisateurs et des licences :
+
+L’administration des utilisateurs et l’affectation des licences est accessible depuis l’onglet ‘Administration’, rubrique ‘Utilisateurs et groupes’.
+
+image::image12.png[image,width=672,height=395]
+
+Cette fonctionnalité n’est disponible que pour les utilisateurs avec pouvoir, à savoir ceux faisant partie des groupes :
+
+* _Administrators group_
+* _Power users group_
+
+Pour ces utilisateurs, l’onglet « Administration » est affiché, leur permettant d’accéder aux fonctions de gestion des utilisateurs et des groupes.
+
+a.  Créer un utilisateur :
+
+Pour créer un nouvel utilisateur, cliquez sur le bouton ‘Ajouter un utilisateur’, la page suivante s’ouvre alors :
+
+image::image13.png[image,width=539,height=456]
+
+**Identifiant** : Correspond au nom du compte (par ex. initiales)
+
+**Prénom** : Prénom de l’utilisateur
+
+**Nom** : Nom de l’utilisateur
+
+**Société** : Société à laquelle appartient l’utilisateur
+
+**Emai**l : Adresse mail de l’utilisateur
+
+**Mot de passe **: Mot de passe de l’utilisateur (modifiable par la suite)
+
+**Groupes de cet utilisateur** : Permet d’affecter immédiatement un groupe à l’utilisateur
+
+* Pour rechercher un groupe, saisissez au moins les trois premières lettres du groupe
+* Pour afficher tous les groupes, saisissez la chaîne de caractère %%%
+
+NB : Les champs suffixés par un astérisque rouge *** sont obligatoires
+
+Une fois les informations saisies pour ce premier utilisateur, vous pouvez alors :
+
+* **Enregistrer et créer** : L’utilisateur est créé et la page se recharge pour la création suivante
+* **Enregistrer** : La fiche de l’utilisateur est créée et vous accédez à une page de synthèse
+* **Annuler** : Vous pouvez annuler l’opération de création et revenir à l’écran précédent
+
+Une fois l’utilisateur créé, 4 onglets sont alors disponibles :
+
+**Voir **: Affiche une synthèse des informations de l’utilisateur
+
+image::image14.png[image,width=626,height=257]
+
+**Modifier** : Permet la modification des informations de l’utilisateur
+
+___________________________________________________________________
+image::image15.png[image,width=627,height=190]
+___________________________________________________________________
+
+**Changer le mot de passe** : Permet le changement du mot de passe de l’utilisateur
+
+___________________________________________________________________
+image::image16.png[image,width=531,height=155]
+___________________________________________________________________
+
+**Licences** : Permet de gérer l’affectation des licences
+
+image::image17.png[image,width=240,height=140]
+
+* Les licences PLIM sont « nommées », c’est-à-dire qu’une fois attribuée, même si un utilisateur n’est pas connecté, elle ne sera pas disponible pour un autre utilisateur.
+* A chaque licence attribuée, le compteur associé est décrémenté et indique le nombre de licences restantes disponibles.
+* L’affectation des licences permet à l’utilisateur d’accéder à un ou plusieurs environnements en fonction de ses attributions.
+** Licence **PIM** : Accès à l’environnement « Espace de travail »
+
+__________________________________________________________________
+image::image18.png[image,width=317,height=24]
+__________________________________________________________________
+
+* Licence **PLM** : Accès à l’environnement « Projets R&D »
+
+__________________________________________________________________
+image::image18.png[image,width=317,height=24]
+__________________________________________________________________
+
+* Licence **REP** : Accès à l’environnement « Référentiel »
+
+__________________________________________________________________
+image::image18.png[image,width=317,height=24]
+__________________________________________________________________
+
+* Un utilisateur disposant de l’intégralité des licences verra donc apparaître la totalité des environnements dans la barre de menu principale :
+
+__________________________________________________________________
+image::image18.png[image,width=317,height=24]
+__________________________________________________________________
+
+a.  Rechercher un utilisateur :
+
+Pour rechercher un utilisateur, saisissez le nom du compte, le prénom ou le nom puis cliquez sur ‘Recherche’.
+
+image::image19.png[image,width=706,height=144]
+
+a.  Rechercher tous les utilisateurs :
+
+Pour afficher la liste de tous les utilisateurs, vous pouvez utiliser le caractère * ou la série de caractères suivante %%% puis cliquer sur « Recherche » :
+
+image::image20.png[image,width=328,height=268] image::image21.png[image,width=305,height=268]
+
+a.  Consulter la fiche d’un utilisateur :
+
+Pour consulter les détails d’un utilisateur, cliquer directement sur son identifiant, nom ou prénom
+
+image::image22.png[image,width=330,height=270] image::image23.png[image,width=242,height=330]
+
+a.  Supprimer un utilisateur :
+
+Même s’il est __fortement recommandé de ne jamais supprimer un utilisateur__, il existe cependant la possibilité de le faire en cliquant simplement sur le bouton du même nom au niveau de la fiche.
+
+image::image24.png[image,width=255,height=221] image::image25.png[image,width=279,height=86]
+
+**Recommandations** :
+
+* Un utilisateur ne doit jamais être supprimé, sauf s’il s’agit par exemple d’un profil de test sur un environnement de pré-production.
+* Si tel devait être le cas, _il est indispensable de retirer les licences (décocher) avant la suppression_ du profil sous peine d’une perte définitive.
+* En cas d’erreur, il reste possible de recréer l’utilisateur à l’identique, le système sera alors capable de réassocier les éléments ‘techniques’ du profil, mais il faut pour cela que le nom du compte (identifiant) soit strictement le même.
+* Il est préférable de désactiver un profil utilisateur en lui retirant ses licences, en le supprimant de tous les groupes auquel il appartient et le cas échéant en réinitialisant son mot de passe.
+a.  Personnalisation d’un profil utilisateur :
+
+Chaque utilisateur peut s’il le désire personnaliser quelques éléments de son profil, pour cela il peut accéder à son profil en se rendant dans le menu disponible en haut à droite de l’écran et en sélectionnant « Profil »
+
+image::image26.png[image,width=321,height=205] image::image27.png[image,width=300,height=514]
+
+Il accède alors à son profil complet et peut le modifier en sélectionnant les options de modification disponibles dans le menu « Actions » situé en haut à droite de l’écran.
+
+image::image28.png[image,width=251,height=150]
+
+image::image29.png[image,width=441,height=426]
+
+Les options de modification disponibles varient selon les profils, dans le cas présent un profil administrateur dispose de l’intégralité des fonctions de modifications existantes.
+
+Il dispose également de la possibilité de modifier son mot de passe, tout en sachant qu’un administrateur pourra toujours le modifier au besoin.
+
+image::image30.png[image,width=477,height=131]
+
+[[gestion-des-groupes-et-des-sous-groupes]]
+== Gestion des groupes et des sous-groupes :
+
+La gestion des groupes se fait depuis la même page d’administration, cette fois-ci dans l’onglet « Groupes » :
+
+image::image31.png[image,width=694,height=275]
+
+De la même façon, cette fonctionnalité n’est disponible que pour les utilisateurs avec pouvoir, à savoir ceux faisant partie des groupes :
+
+* _Administrators group_
+* _Power users group_
+
+Pour ces utilisateurs, l’onglet « Administration » est affiché, leur permettant d’accéder aux fonctions de gestion des utilisateurs et des groupes.
+
+**NB** : Les fonctions de recherches étant identiques entre utilisateurs et groupes (3 premières lettres ou * ou %%%), elles ne seront pas re-détaillées dans les paragraphes suivants. Pour plus de détails, se reporter aux paragraphes précédents.
+
+a.  Notions de groupes et de sous-groupes :
+
+Un sous-groupe est techniquement strictement identique à un groupe, à la différence près qu’il est dépendant d’un groupe ‘parent’. Cette imbrication permet dans certains cas de simplifier l’administration des droits. Des exemples et plus de détails seront donnés dans les paragraphes suivants.
+
+a.  Créer un groupe :
+
+Pour créer un nouveau groupe, la manipulation reste la même que pour un utilisateur, avec un écran différent :
+
+image::image32.png[image,width=599,height=381]
+
+**Nom du groupe** : Correspond à un libellé simplifié, court et représentatif. Sont généralement utilisés des acronymes (R_ET_D, QUAL, CDG…).
+
+**Libellé du groupe** : Correspond au libellé complet du groupe, celui qui apparaîtra à différents niveaux dans les écrans de l’application.
+
+**Membres du groupe** : De la même façon qu’il est possible d’associer des groupes depuis le profil d’un utilisateur, il est possible ici d’associer directement des utilisateurs lors de la création du groupe. Le lien est donc modifiable de façon bidirectionnelle.
+
+**Sous-groupes** : Comme indiqué précédemment, il est possible d’imbriquer un ou plusieurs groupes sous un groupe. C’est donc au travers de ce champ qu’il est possible de faire le lien. Il est nécessaire d’avoir créé le groupe au préalable.
+
+image::image33.png[image,width=510,height=149]
+
+Une fois le groupe créé, 2 onglets sont disponibles :
+
+**Voir **: Affiche une synthèse des informations du groupe
+
+image::image34.png[image,width=299,height=237]
+
+**Modifier** : Permet la modification des informations du groupe (ajout d’utilisateurs, sous-groupes…)
+
+image::image35.png[image,width=472,height=365]
+
+**Recommandations** :
+
+* Utiliser des libellés courts et simples pour nommer vos groupes
+* Bien prendre en compte le fait que l’imbrication des groupes implique des dépendances pouvant parfois avoir des effets indésirables au niveau des droits : Par exemple des droits élevés vont être définis sur un groupe, par conséquence tous les sous-groupes liés vont en hériter. Ainsi si l’administrateur n’y prête pas attention, en plaçant un utilisateur dans un sous-groupe, il ne verra peut-être pas que celui-ci héritera de droits biens supérieurs à ceux qu’il devrait en théorie avoir.
+a.  [[administration-des-répertoires]]
+== Administration des répertoires :
+
+L’outil PLIM étant très ouvert quant à la création de répertoires, il convient de mettre en place certaines règles simples d’administration permettant d’éviter des dérives dans la gestion et l’administration du contenu.
+
+Comme indiqué dans la première partie de ce document, il est possible de créer une arborescence de répertoires totalement personnalisée.
+
+Dans l’écran ci-dessous on peut apercevoir une structure de classification avec dans chaque répertoire un contenu géré et administré différemment en fonction de la configuration définie pour chacune d’entre eux :
+
+image::image36.png[image,width=698,height=319]
+
+a.  Préconisations :
+
+* Avant de se lancer dans le paramétrage, il est primordial de bien définir la structure de départ en raisonnant de façon pragmatique et en commençant avec une arborescence simple. Il est beaucoup plus facile par la suite de créer de nouveaux répertoires plutôt que de devoir refondre une structure complexe.
+* Il existe plusieurs approches quant à la définition de cette structure : Par typologie d’articles, par secteur d’activité, par gamme, par projet, par métier… toutes les combinaisons sont possibles, en prenant garde aux impacts que ces choix initiaux auront sur l’utilisation quotidienne de l’application.
+* Une structure trop complexe va engendrer des règles de gestion également très complexes et difficiles à maintenir.
+a.  Gestion des répertoires :
+
+Après avoir défini votre arborescence, il est possible d’appliquer une configuration locale sur chacun des répertoires, avec une notion d’héritage ou non des droits depuis les parents.
+
+Pour cela, placez-vous sur un répertoire, puis cliquez sur le menu « Administration », dans l’exemple ci-dessous nous allons travailler sur l’administration d’un répertoire destiné à ne contenir que des objets de type « matières premières »
+
+_*Menu « Administration » | Onglet*_ « **Droits d’accès** » :
+
+Premier onglet de ce menu, c’est ici que sont définis les droits d’accès au contenu du répertoire.
+
+image::image37.png[image,width=704,height=460]
+
+* **Droits hérités** : Correspondent aux droits hérités depuis le répertoire « parent » (dans notre cas, le répertoire « Articles »). En cochant « Bloquer l’héritage des droits », aucun droit hérité ne sera appliqué, seuls les droits locaux seront pris en compte.
+* **Droits locaux** : Correspondent aux règles locales mises en place sur le répertoire. Elles se cumulent aux droits hérités, mais prennent également le dessus si un règle du même type est définie sur le répertoire parent. Par exemple si le répertoire parent autorise uniquement la lecture, le droit local va permettre à un utilisateur ou un groupe d’écrire en surpassant le droit hérité.
+
+image::image38.png[image,width=627,height=192]
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Dans l’exemple ci-dessus, « U ZEUR » fait partie du groupe « Members group ». Au niveau des droits hérités, il devrait uniquement pouvoir lire le contenu du répertoire, cependant un droit local autorisant exceptionnellement « U ZEUR » à écrire va lui permettre de créer et modifier de nouveaux objets.
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+* **Définition des droits** : La définition des droits se fait donc par répertoire, par la mise en place de règles. Le principe est de définir une permission (lecture, écriture…) à un utilisateur ou un groupe préfixé par une action (accorder, refuser).
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+image::image39.png[image,width=674,height=120]
+
+Il est donc possible « d’accorder » la « lecture » à un groupe et en même temps de « refuser » ce même droit en « lecture » à un utilisateur.
+
+**NB** : Dans le cas où une règle viendrait contredire une règle existante - par exemple un utilisateur possède le droit d’écrire puis une seconde règle est créée interdisant cette fois-ci l’écriture – c’est la dernière règle créée qui prend le dessus sur la précédente.
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+_*Menu « Administration » | Onglet*_ « **Configuration Locale** » :
+
+Deuxième onglet de ce menu, il contient un ensemble de paramètres permettant de personnaliser le comportement du répertoire.
+
+image::image40.png[image,width=627,height=371]
+
+Cet onglet se décompose en cinq sections. Par défaut chaque section est désactivée et c’est le comportement par défaut qui est pris en compte. Pour personnaliser le répertoire il convient donc d’activer image::image41.png[image,width=44,height=12] une ou plusieurs sections en fonction des besoins, de la même façon il suffit de désactiver image::image42.png[image,width=58,height=14] une section pour revenir à un comportement standard.
+
+* _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+__*Configuration des contenus d’éléments*__ : Cette section permet de personnaliser l’affichage du contenu du répertoire en associant une « ContentView », c’est-à-dire une façon de présenter la liste des documents au sein du répertoire (colonnes présentes et ordres, types d’objets exclus etc….). Il est recommandé de personnaliser les répertoires contenant des articles en utilisant la « ContentView » ‘Plim – contenu de l’élément’ (affichage du code, libellé…).
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+image::image43.png[image,width=627,height=216]
+
+* ____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+_*Configuration de la recherche par filtres :*_ Si des modèles de recherche par filtres ont été paramétrés, il est possible de définir dans cette section les types de recherches applicables sur ce répertoire. Par défaut ce sont les filtres par défaut qui s’appliquent, et aucun modèle n’est pré-paramétré, contrairement aux « ContentView ».
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+image::image44.png[image,width=627,height=122]
+
+- _*Configuration de la recherche :*_ Fonction non paramétrable à ce jour (évolution à venir)
+
+image::image45.png[image,width=627,height=82]
+
+- _*Configuration du thème :*_ Permet de personnaliser un thème particulier (couleur, police, logo…) sur un répertoire donné. Cette configuration peut servir à différencier visuellement un répertoire d’un autre, attention toutefois pour le moment seul un thème ‘PLIM’ existe, les autres étant des thèmes donnés à titre d’exemple. Cette partie est donc assez peu exploitable dans l’immédiat mais devrait rapidement s’enrichir de nouveaux thèmes dans les toutes prochaines versions.
+
+image::image46.png[image,width=627,height=106]
+
+* _____________________________________________________________________________________________________________________________________________________________________________________________________
+_*Configuration des types d’éléments :*_ Permet de définir le ou les types de documents autorisés dans le répertoire à partir de la liste complète de tous les types d’objets existants dans l’outil.
+_____________________________________________________________________________________________________________________________________________________________________________________________________
+
+image::image47.png[image,width=627,height=170]
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________
+Dans l’exemple ci-dessus, la configuration locale du contenu va avoir pour effet de ne présenter que les documents sélectionnés lors de la création d’un nouveau document comme le montre la capture ci-dessous.
+
+image::image48.png[image,width=627,height=326]
+
+Lorsque cette configuration est désactivée, par défaut c’est la totalité des objets qui est proposée, rendant plus complexe la lisibilité et la compréhension pour l’utilisateur.
+
+image::image49.png[image,width=627,height=285]
+
+**NB **: Il est donc fortement recommandé d’administrer cette configuration de façon à rendre lisible et exploitable les informations dans chaque répertoire de travail.
+________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+* +
+*
+
+_*Menu « Administration » | Onglet*_ « **Notifications** » :
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Dans ce menu des utilisateurs peuvent s’abonner à des événements pouvant se produire sur le répertoire – ou directement sur un objet – de façon à être informés par mail dès qu’une modification aura lieu. Différents types d’évènements déclencheurs sont disponibles en fonction de ce que l’utilisateur souhaite suivre.
+
+image::image50.png[image,width=337,height=266] image::image51.png[image,width=213,height=222]
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+_*Menu « Administration » | Onglet*_ « **Publication** » :
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Ce menu permet de définir les règles de publication des objets présents dans le répertoire. Pour rappel, la publication correspond à l’envoi d’un objet dans un répertoire de référence où il ne pourra pas être modifié.
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Cette configuration permet donc de définir des règles entre la partie travail et la partie référentiel, même si la structure des répertoires est différente. Dans notre exemple, les répertoires sources et cibles sont identiques, on publie donc les « Matières premières » vers un répertoire « Matières premières », mais on pourrait imaginer publier des matières premières depuis un autre répertoire, par exemple « Projets », c’est donc ici que la règle se construit.
+
+___________________________________________________________________
+image::image52.png[image,width=627,height=273]
+___________________________________________________________________
+
+_*Menu « Administration » | Onglet*_ « **Corbeille** » :
+
+Comme son nom l’indique il s’agit d’une corbeille dans laquelle sont virtuellement envoyés les objets supprimés. Virtuellement car lorsqu’un objet est supprimé depuis le répertoire de travail – via le bouton « Supprimer », - il ne l’est pas réellement en base, il ne fait que prendre un statut particulier le faisant disparaître de la liste des objets. Techniquement, la « ContentView » par défaut du répertoire de travail va exclure de la liste tous les documents ayant un statut « Supprimé », alors que dans l’onglet « Corbeille », seuls apparaissent les objets ayant ce statut.
+
+image::image53.png[image,width=705,height=218]
+
+Cet onglet est donc une sécurité supplémentaire permettant à un administrateur de récupérer un document supprimé involontairement.
+
+image::image54.png[image,width=204,height=86]
+
+Attention toutefois à la gestion de ces corbeilles dans chaque répertoire de travail. En effet, même si cette fonctionnalité apporte une vraie sécurité pour les données, elle nécessite de la maintenance régulière pour supprimer définitivement les documents n’ayant plus lieu d’être.
+
+Dans la mesure où les documents présents dans cet onglet ne sont en réalité pas définitivement détruits, cela peut poser des problèmes quand ces documents sont liés d’une manière ou d’une autre à d’autres documents dans l’application. Par exemple un modèle de rendu (génération documentaire) est lié à chaque objet dans l’outil. Si pour une raison ou une autre ce modèle de rendu doit être supprimé, il faut au préalable « casser » tous les liens existant sur chaque article, et le risque est de ne pas voir que le rendu est encore associé à des objets « Supprimé », par conséquent il sera impossible de supprimer un modèle de rendu tant que tous les liens existeront encore.
+
+Il est donc fortement recommandé d’entretenir régulièrement les corbeilles de chaque répertoire, en définissant par exemple un responsable, une fréquence journalière ou hebdomadaire pour purger le contenu dans le but de ne pas continuer à gérer des références obsolètes pouvant avoir des impacts sur l’administration dans le temps.
+
+_*Menu « Modifier » | Personnalisation du descriptif*_
+
+Pour chaque répertoire il existe la possibilité d’ajouter un descriptif du contenu destiné à faciliter la compréhension des utilisateurs. Ce descriptif apparaît en tête du panneau de droite dans l’outil, mais également sous le titre lors de l’affichage du contenu.
+
+image::image55.png[image,width=695,height=191]
+
+Pour personnaliser ce descriptif, il suffit de compléter ou modifier le champ « Description » de la fiche du répertoire en cliquant sur le menu « Modifier ».
+
+[[administration-générale]]
+== Administration générale :
+
+Dans ce dernier paragraphe du chapitre ‘ Administration PLIM ‘ vont être présentés plus généralement les différents menus et fonctionnalités de l’onglet ‘Administration’ disponible pour les utilisateurs disposant d’un profil adéquat.
+
+image::image56.png[image,width=627,height=374]
+
+_*Menu « Informations Systèmes » | Onglet*_ « **Serveur** » :
+
+Donne une synthèse des informations relatives à l’infrastructure technique de l’application (Système d’exploitation, processeur (s), mémoire totale, disponible…)
+
+image::image57.png[image,width=553,height=208]
+
+Il existe la possibilité de redémarrer manuellement l’application depuis cet onglet, __attention avant de réaliser cette opération de bien vérifier si des utilisateurs sont connectés__.
+
+_*Menu « Informations Systèmes » | Onglet*_ « *PLIM Distribution* » :
+
+Donne une synthèse des éléments techniques relatifs à la partie logicielle (version des programmes, mises à jour, numéro de version…)
+
+image::image58.png[image,width=627,height=229]
+
+Ces données peuvent être utiles lors d’un appel de maintenance afin de connaître la configuration logicielle précise de l’application client.
+
+_*Menu « Informations Systèmes » | Onglet*_ « *Configuration* » :
+
+Cet onglet affiche un ensemble d’informations techniques relatives à la configuration spécifique de l’application paramétrée (URL du serveur, type de BDD, serveur…)
+
+image::image59.png[image,width=564,height=610]
+
+Cet écran présente en réalité le contenu du fichier de configuration (nuxeo.conf) présent sur le serveur.
+
+__Il est vivement recommandé de ne pas modifier ce paramétrage__, les impacts sur l’application peuvent être destructeurs en cas de mauvaise manipulation.
+
+_*Menu « Informations Systèmes » | Onglet*_ « *Statistiques de la base de données…* » :
+
+Cet onglet permet d’obtenir des statistiques (volumétrie d’objets, de fichiers, tailles de fichiers…). Pour afficher les statistiques, il est nécessaire de cliquer sur le bouton « Rafraichir ».
+
+image::image60.png[image,width=695,height=258]
+
+Ces informations peuvent être utiles pour évaluer la volumétrie de création d’éléments en fonction de leurs types (par ex. nombre de ‘Matières premières’, ‘Emballages’, ‘Produits finis’…)
+
+_*Menu « Informations Systèmes » | Onglet*_ « *Binaires* » :
+
+Les « binaires » correspondent à l’ensemble des fichiers (documents, tableurs, images…) ayant été importés dans l’application. Ainsi chaque fichier associé à un document est un ‘binaire’. Ils sont téléchargés sur le serveur dans un répertoire spécifique – un coffre de fichiers – et stockés de façon complexe (par clef de hachage) afin d’éviter un accès direct à ces fichiers en dehors de l’application.
+
+image::image61.png[image,width=706,height=170]
+
+Lorsqu’un fichier est remplacé, par exemple changement d’une photo, d’un document associé… il n’est pas directement supprimé du coffre de fichier. Il est donc considéré comme « orphelin », c’est-à-dire présent physiquement sur le serveur, mais n’ayant plus aucun lien avec les objets du référentiel. Il est donc utile de surveiller le développement de ces fichiers afin de limiter la croissance de la taille disque. Pour ce faire, cliquer sur « Marquer les fichiers binaires orphelins », puis en fonction du résultat, __vous pouvez décider de nettoyer le coffre de fichiers en cochant la case « Supprimer les fichiers binaires orphelins » et en re-cliquant sur le bouton « Marquer les fichiers binaires orphelins »__.
+
+_*Menu « Activité » | Onglet*_ « *Sessions utilisateurs* » :
+
+Ce menu permet de visualiser la liste de personnes connectées, les durées de sessions (temps passé par l’utilisateur sur l’outil), les dernières pages consultées…
+
+image::image62.png[image,width=702,height=100]
+
+_A utiliser systématiquement avant chaque intervention sur le serveur (redémarrage)_ afin de ne pas déconnecter involontairement des utilisateurs.
+
+_*Menu « Activité » | Onglet*_ « *Evènements* » :
+
+Dans cette rubrique sont listés tous les enregistrements d’événements ayant eu lieu dans l’outil (modification, suppression, connexion, déconnexion…) par ordre chronologique et en faisant apparaître l’utilisateur à l’origine de l’évènement ainsi que différentes informations complémentaires.
+
+image::image63.png[image,width=697,height=238]
+
+Cette table d’évènements est un outil système standard, non modifiable, non paramétrable, mais sur laquelle il est possible de filtrer le résultat en fonction de différents critères disponibles depuis le bouton image::image64.png[image,width=25,height=26]
+
+Une fenêtre apparaît alors en surbrillance permettant de définir sur quel type d’action, en fonction d’une durée (date de début, de fin) ou encore selon la catégorie ou l’utilisateur responsable de l’évènement.
+
+image::image65.png[image,width=617,height=196]
+
+Cet outil d’audit peut notamment servir à retrouver la trace d’une modification involontaire afin de tenter une restauration (par exemple récupérer un objet supprimé).
+
+_*Menu « Activité » | Onglet*_ « *Background work* » :
+
+Cet écran standard présente un rapport d’activité des “travaux” réalisés en tâches de fond sur le serveur. Ces informations ne sont utiles que lors de la mise en place de fonctions spécifiques lourdes et dont le traitement est déporté en tâches de fond. Dans cette version il n’existe pour le moment pas de traitements de fond – en dehors d’une tâche de vérification périodique de validité des licences – représentant un intérêt majeur pour un administrateur.
+
+image::image66.png[image,width=672,height=166]
+
+_*Menu « Activité » | Onglet*_ « *Graphiques d’activités* » :
+
+Cet écran standard non paramétrable permet de visualiser sous forme graphique l’activité de l’application sur 2 aspects : Les évènements relatifs aux actions dans le référentiel, et l’activité http représentant le nombre de sessions et le nombre de requêtes.
+
+image::image67.png[image,width=676,height=197]
+
+Ces écrans sont également disponibles sous la forme de « Gadgets » pour être visualisés sur l’écran d’accueil
+
+_*Menu « Nuxeo Connect » | Onglet*_ « *Statut d’enregistrement…* » :
+
+Cette rubrique sera plus longuement détaillée dans la seconde partie de ce document (Administration STUDIO), mais dans le principe chaque application doit être enregistrée pour être liée à l’outil d’administration « STUDIO » permettant de redescendre le paramétrage réalisé côté Studio vers l’application client.
+
+image::image68.png[image,width=627,height=347]
+
+_*Menu « Nuxeo Connect » | Onglet*_ « *Tickets ouverts…* » :
+
+Fonctionnalité non disponible pour le moment
+
+image::image69.png[image,width=474,height=76]
+
+_*Menu « Update Center » | Onglet*_ « *Mises à jour logiciels…* » :
+
+Dans cet écran sont listées toutes les mises à jour logicielles « Nuxeo », c’est-à-dire la plateforme technique de la suite PLIM. Le fonctionnement de cette interface sera traité dans la seconde partie de ce document.
+
+image::image70.png[image,width=697,height=186]
+
+Il est fortement recommandé de _contacter le support technique avant l’installation de ce type de mise à jour_ pouvant avoir de nombreux impacts si non qualifié au préalable.
+
+_*Menu « Update Center » | Onglet*_ « *Studio* » :
+
+Les mises à jour « Studio » correspondent au paramétrage et à la personnalisation de l’application client. Le fonctionnement sera détaillé dans le prochain paragraphe.
+
+image::image71.png[image,width=695,height=214]
+
+_*Menu « Update Center » | Onglet*_ « *Packages privés* » :
+
+Fonctionnalité non disponible pour le moment
+
+image::image72.png[image,width=693,height=138]
+
+_*Menu « Update Center » | Onglet*_ « *Packages du marketplace* » :
+
+Les packages du marketplace sont des « briques élémentaires » de la plateforme technique standard Nuxeo. Certaines de ces briques sont indispensables au bon fonctionnement de l’outil PLIM, d’autres peuvent entrer en conflit avec l’application client. Comme pour les mises à jour logicielles, il est fortement recommandé de _contacter le support technique avant l’installation de ce type de modules._ Le fonctionnement sera détaillé dans la seconde partie de ce document.
+
+image::image73.png[image,width=691,height=130]
+
+_*Menu « Update Center » | Onglet*_ « *Packages du marketplace* » :
+
+Dans ce menu sont listés les « packages » présents localement sur le serveur, soit téléchargés depuis la gestion Studio, soit importés manuellement depuis un poste client. Le fonctionnement sera détaillé dans la seconde partie de ce document.
+
+image::image74.png[image,width=690,height=187]
+
+_*Menu « Monitoring » | Onglet*_ « *Statuts Administratifs* » :
+
+Indique la liste des autres instances (TEST, PREPROD, PROD…) déclarées auprès de Nuxeo et indique le statut général de l’application (pastille verte).
+
+image::image75.png[image,width=699,height=286]
+
+_*Menu « Monitoring » | Onglet*_ « *Sondes* » :
+
+Les sondes correspondent à des outils de tests permettant de contrôler l’état et le statut de certains modules et certaines fonctionnalités de la plateforme. Il est notamment possible de contrôler la connectivité avec la base de données, la disponibilité de l’instance locale de l’application.
+
+image::image76.png[image,width=704,height=152]
+
+Chaque « sonde » peut être lancée individuellement en cliquant sur le bouton image::image77.png[image,width=88,height=26] ; le résultat du test s’affiche alors sous la forme d’une pastille verte image::image78.png[image,width=12,height=13] accompagnée d’un compte-rendu de test.
+
+_*Menu « Monitoring » | Onglet*_ « **Bus d’évènements Nuxeo**» :
+
+Cette page présente des statistiques sur l’ensemble des bus d’évènements (Listeners), ces informations pourront servir dans la surveillance du serveur afin d’identifier les événements les plus « consommateurs ».
+
+image::image79.png[image,width=706,height=288]
+
+_*Menu « Monitoring » | Onglet*_ « **Shell »** :
+
+Cette page démarre un plugin Java depuis l’onglet d’administration permettant d’exécuter une interface Shell et de naviguer dans l’application en lignes de commandes et non plus via une interface utilisateur Web. _Module réservé à des profils développeurs ou administrateurs avancés._
+
+image::image80.png[image,width=627,height=122]
+
+image::image81.png[image,width=627,height=221]
+
+_*Menu « OAuth / OpenSocial » :*_
+
+image::image82.png[image,width=695,height=179]
+
+* Non traité dans ce document
+
+_*Menu « Utilisateurs et groupes » | Tous les « onglets » :*_
+
+image::image83.png[image,width=427,height=181]
+
+* Voir paragraphe précédent sur gestion des utilisateurs et groupes
+
+_* +
+*_
+
+_*Menu « Vocabulaires » :*_
+
+image::image84.png[image,width=627,height=218]
+
+Les « vocabulaires » correspondent concrètement au contenu des listes disponibles dans les menus déroulants des champs présents à différents niveaux dans l’application.
+
+Exemple sur la fiche article, le champ « Famille » fait appel à un vocabulaire « RMFamilyVoc » :
+
+image::image85.png[image,width=411,height=251]
+
+On retrouve donc ce vocabulaire dans l’administration permettant d’en modifier le contenu.
+
+image::image86.png[image,width=627,height=190]
+
+La création de ces vocabulaires est réalisée via l’outil de conception « Studio », l’utilisateur ne peut donc pas à ce niveau modifier ou faire évoluer l’affichage.
+
+Il peut en revanche agir sur le contenu, en saisissant directement de nouvelles entrées dans chaque vocabulaire, en modifiant le contenu existant.
+
+**Ajout d’une nouvelle entrée** :
+
+Pour ajouter une nouvelle entrée dans le vocabulaire, cliquez sur le bouton du même nom, puis saisissez les informations demandées :
+
+image::image87.png[image,width=627,height=401]
+
+**Code** : Correspond à l’identifiant unique de chaque enregistrement dans le vocabulaire.
+
+**Libellé** : Correspond au libellé affiché dans les listes déroulantes, celui vu par l’utilisateur
+
+**Obsolescence** : Il est utilisé en modification pour rendre obsolète une valeur sans la supprimer. En effet si des articles ont été créés avec une valeur de vocabulaire qui un jour devient obsolète, il faut pouvoir garder l’historique tout en empêchant l’utilisateur d’utiliser à nouveau cette valeur.
+
+**Ordre **: Permet de définir un ordre d’apparition des éléments dans une liste. Par défaut c’est le libellé qui est pris en compte, l’ordre permet donc de « forcer » un ordre d’affichage dans les listes.
+
+**Modification d’une entrée** :
+
+Pour modifier un enregistrement, sélectionnez la ligne à modifier puis cliquez sur le bouton du même nom.
+
+image::image88.png[image,width=680,height=189]
+
+Seul le code n’est pas modifiable dans la mesure où il s’agit d’une clef unique d’identification. Il est possible cependant de modifier le libellé, ou le statut d’obsolescence ou encore l’ordre d’affichage.
+
+**Suppression d’une entrée** :
+
+Même si cela est __fortement déconseillé sur un environnement de production__, il reste possible de supprimer un enregistrement de vocabulaire en cliquant sur le bouton du même nom. Il vaut mieux pour cela utiliser le marqueur d’obsolescence plutôt que d’effacer la donnée.
+
+image::image89.png[image,width=694,height=63]
+
+**Import des données en masse** :
+
+Il existe une possibilité d’importer en masse des données à partir d’un fichier .csv (tableur de données avec séparateur ;), cependant cette opération est uniquement réalisable depuis l’outil d’administration « Studio ». Le fonctionnement de cette partie sera donc décrit dans la seconde partie de ce document.
+
+_*Menu « Tableau de bord » :*_
+
+Le menu tableau de bord permet de définir l’affichage par défaut de la page d’accueil. A la première connexion c’est cet écran qui apparaitra par défaut, puis pourra être personnalisé par l’utilisateur.
+
+image::image90.png[image,width=690,height=300]
+
+Un utilisateur ayant personnalisé sa page d’accueil et souhaitant revenir sur la définition de départ pourra le faire en cliquant sur le bouton « Revenir à l’état initial »
+
+image::image91.png[image,width=119,height=31]
+
+_*Menu « Licences » :*_
+
+Cet écran présente une synthèse des licences installées, disponibles, leurs dates de validité et l’affectation par utilisateur de chacune d’entre elle.
+
+image::image92.png[image,width=619,height=315]
+
+_*Menu « Workflow » :*_
+
+Permet d’afficher des informations techniques relatives aux Workflows installés ou ayant été installés. Il ne s’agit en aucun cas d’un outil de conception, et les informations disponibles sont destinées à des administrateurs techniques niveau 2 ou des développeurs, __il est donc recommandé de ne pas modifier, supprimer les éléments présents dans cet écran__.
+
+image::image93.png[image,width=704,height=200]
+
+_*Menu « Schémas » :*_
+
+Cette fonction permet de générer au format CSV ou au format XML la définition technique de tous les champs d’un objet. Ces informations vont être utiles notamment dans la mise en œuvre de modèles de ‘templates’ (rendus documentaires), ou encore dans les formulaires de reprise de données (tableur d’import de données).
+
+image::image94.png[image,width=702,height=261]
+
+1.  [[administration-studio]]
+= Administration ‘STUDIO’ :
+a.  [[introduction-1]]
+== Introduction :
+
+Le précédent paragraphe traitait de l’administration de l’application client, c’est-à-dire l’association d’un programme et de la personnalisation réalisée grâce à un outil de conception. Nous allons maintenant nous intéresser à la conception et la personnalisation de l’application client au travers de l’outil « Studio ».
+
+a.  Concepts :
+
+Avant de parler outil, il est nécessaire de comprendre les concepts de base, en l’occurrence la notion de documents ou ‘objets’, comme évoqué déjà dans la première partie de ce document.
+
+En informatique, un objet est un conteneur symbolique, qui possède sa propre existence et incorpore des informations et des mécanismes en rapport avec une chose tangible du monde réel, et manipulés dans un programme.
+
+Par exemple une « matière première » est un objet de la suite PLIM, elle regroupe une multitude d’informations (code, libellé, origines, nutriments, allergènes…) et peut évoluer dans le temps en fonction de son cycle de vie (Conception, validé, obsolète, supprimée…). Elle peut également être manipulée au travers de différentes fonctionnalités (abonnements, restitutions, workflows…).
+
+a.  L’outil Studio et la suite PLIM :
+
+L’outil « Studio » permet donc de paramétrer chaque objet du référentiel, leur cycle de vie, la présentation des écrans, les modèles de Workflows…et plus généralement de personnaliser complétement l’application en fonction des besoins clients, de ses modes de fonctionnement, des informations qu’il aura à gérer.
+
+Cet outil se présente lui aussi sous la forme d’une application web, disponible depuis n’importe poste client connecté au web via un navigateur sans aucune installation en local.
+
+L’adresse pour accéder à cet outil est : http://connect.nuxeo.com[_http://connect.nuxeo.com_]. Les informations d’identifications vous ont été communiquées en début de projet.
+
+Principe général des interactions entre Studio et la suite PLIM :
+
+* Le paramétrage réalisé dans l’outil est ‘compilé’ dans un ‘package’, c’est-à-dire regroupé dans un fichier de configuration qui pourra être récupéré sur le serveur applicatif.
+* Chaque ‘package’ correspond à une version de l’application client, il est ainsi possible de gérer des retours arrières.
+* Ces ‘packages’ sont ensuite visibles depuis l’onglet administration de l’application et peuvent alors être téléchargés et installés.
+* Une fois le téléchargement terminé et le package installé, un redémarrage doit être effectué pour la mise en place automatique des modifications (mise à jour de la base de données, mise à jour des écrans, des listes…)
+a.  Création d’un package / d’une version :
+
+A chaque modification (mineure ou majeure), il est nécessaire de créer un nouveau ‘package’ contenant toutes évolutions apportées à la structure de l’application. Afin de suivre et tracer ces modifications, il est nécessaire de créer des « versions »,
+
+Dans l’outil Studio, affichez le contenu de la rubrique « Settings et Versionning », puis naviguer vers le menu « Versionning » image::image105.png[image,width=67,height=19]
+
+L’écran suivant apparaître, cliquez alors sur « Release Snapshot » image::image106.png[image,width=115,height=23] de façon à prendre une ‘capture’ de la définition de votre application.
+
+image::image107.png[image,width=709,height=302]
+
+Une popup va alors s’ouvrir vous demandant des informations relatives à la version que vous allez créer :
+
+image::image108.png[image,width=324,height=287] image::image109.png[image,width=281,height=287]
+
+Vous pouvez alors choisir le type (informatif) de version que vous souhaitez créer (révision, mineur, majeure) ou encore le suffixe additionnel à donner, soit à partir d’une liste prédéfinie disponible depuis la flèche bleue, soit par saisie manuelle d’un suffixe.
+
+Dans la pratique, le suffixe est toujours saisi à la main et il est recommandé de l’utiliser pour identifier l’auteur de la version en indiquant par exemple des initiales.
+
+Après avoir cliqué sur OK, l’outil va générer automatiquement le package contenant toutes vos modifications puis il apparaîtra en tête de la liste des packages :
+
+image::image110.png[image,width=672,height=87]
+
+En sélectionnant une version et en cliquant sur le bouton ‘**Changes**’, il est possible de voir la liste des modifications apportées entre chaque version :
+
+image::image111.png[image,width=627,height=450]
+
+a.  Récupération et installation d’un package / d’une version :
+
+Comme indiqué dans le précédent chapitre, chaque application client est ‘liée’ à un Studio, ainsi dès qu’un nouveau package a été créé dans l’outil de conception, il devient visible côté application client au niveau de l’administration, dans le menu « Update Center » et l’onglet « Studio »
+
+image::image113.png[image,width=695,height=213]
+
+A partir de cette liste de packages, plusieurs options sont possibles :
+
+image::image114.png[image,width=73,height=15] : Téléchargement du package depuis internet sur le serveur
+
+Apparition de cet écran :
+
+image::image115.png[image,width=384,height=160]
+
+image::image116.png[image,width=118,height=18] : Une fois le téléchargement terminé, 2 options possibles : Installer ou retirer
+
+En cliquant sur « Installation », apparition de cet écran :
+
+image::image117.png[image,width=374,height=188]
+
+Cliquez sur « Installation of package…. »
+
+Un nouvel écran apparaît :
+
+image::image118.png[image,width=627,height=246]
+
+Cliquez sur « Confirm install » en bas de page
+
+Un dernier écran apparaît :
+
+image::image119.png[image,width=501,height=100]
+
+Cliquez sur « Finish » pour lancer l’installation
+
+image::image120.png[image,width=695,height=92]
+
+Le package est alors installé, un redémarrage du serveur est nécessaire, il faut pour cela se rendre sur la liste des packages, se positionner sur le package installé et cliquer sur le bouton « Restart required » image::image121.png[image,width=110,height=20]
+
+Une popup vous demande confirmation :
+
+image::image122.png[image,width=286,height=110]
+
+En cliquant sur « OK », l’opération de redémarrage va démarrer
+
+Le serveur va alors réaliser automatiquement la totalité des modifications définies dans votre package, il s’occupera de modifier la structure de la base de données, mettre à jour ou créer les nouveaux fichiers nécessaires et redémarrer le serveur. Durant toute la durée de cette opération l’écran suivant apparaît :
+
+image::image123.png[image,width=627,height=214]
+
+Une fois l’opération terminée, l’écran de connexion réapparait, votre application est à jour et de nouveau disponible.
+
+image::image124.png[image,width=500,height=365]
+
+**Rappel** : Assurez-vous toujours de prévenir vos utilisateurs avant de réaliser une telle opération,
+
+image::image125.png[image,width=68,height=13] : Une fois installé, une version peut être désinstallée en cliquant sur le bouton « Uninstall » - si par exemple les modifications apportées ne conviennent pas… - c’est alors la dernière version installée qui est récupérée.
+
+a.  Présentation générale des fonctionnalités Studio :
+
+L’interface utilisateur Studio se décompose en 2 grandes parties :
+
+* Sur la partie gauche, l’ensemble des thématiques de paramétrage
+* Sur la partie droite, le détail et les actions réalisables pour chaque thématique
+
+image::image126.png[image,width=627,height=243]
+
+Rubrique « **Project **» :
+
+image::image127.png[image,width=69,height=16] : Gestion des fichiers de ressources externes (fichiers de langues par ex.)
+
+image::image128.png[image,width=60,height=17] : Personnalisation du thème général de l’application (couleur, logo, style…) ***
+
+image::image129.png[image,width=88,height=20] : Paramétrage du modèle de données des objets (champs, tables…) - HORS ECRANS
+
+image::image130.png[image,width=66,height=20] : Paramétrage des Workflow (étapes, destinataires, durées..)
+
+image::image131.png[image,width=99,height=17] : Paramétrage des écrans et de l’affichage en général dans l’application
+
+image::image132.png[image,width=72,height=16] : Mécanismes et automatismes pouvant être utilisés sur des objets (calculs…)
+
+image::image133.png[image,width=68,height=20] : Paramétrage de modèles (modèles de mail)
+
+image::image134.png[image,width=120,height=16] : Paramétrage avancé des utilisateurs et groupes ***
+
+image::image135.png[image,width=77,height=13] : Paramétrage de la structure des vocabulaires et imports en masse (listes de valeurs)
+
+image::image136.png[image,width=109,height=16] : Paramétrage avancé de l’application ***
+
+*** _Les rubriques « Branding », « Roles et permissions » et « Advanced Settings » ne seront pas détaillées dans ce document car réservées à des développeurs ou non exploitées à ce jour. __Une modification dans l’une d’entre elle peut déstabiliser l’application__._
+
+Rubrique « **Settings & Versioning** » :
+
+image::image137.png[image,width=70,height=17] : _Gestion des versions et des ‘packages’ d’applications client. (cf. précédemment)_
+
+_Les autres thématiques ne seront pas détaillées ici s’agissant de fonctionnalités développeur ou non exploitées à ce jour._
+
+[[principaux-concepts-de-la-structure-de-données]]
+== Principaux concepts de la structure de données
+
+Ce premier paragraphe traite de la modélisation de la structure de données dans l’outil Studio. Cette construction est réalisée dans la thématique « Content model » :
+
+image::image138.png[image,width=149,height=91]
+
+On retrouve plusieurs sous-dossiers dans cette thématique :
+
+image::image139.png[image,width=64,height=16] : Correspond physiquement aux tables de la base de données. Attention, ces tables sont bien distinctes et peuvent être communes à certaines objets (par ex. Nutriments pour les MP et les PF) ou non (les EMB ne font pas appel à la table des nutriments). En reprenant le schéma des concepts, on peut représenter cela de la façon suivante :
+
+image::image140.png[image,width=301,height=207]
+
+image::image141.png[image,width=72,height=17] : Correspond à la définition de l’objet, c’est-à-dire les tables réellement utilisées par le document. Comme indiqué précédemment, chaque objet n’utilise par toutes les tables. En reprenant le schéma comme exemple, les documents correspondent à un « assemblage » de quelques tables, représenté par les liens mis en place entre eux.
+
+image::image140.png[image,width=301,height=207]
+
+image::image142.png[image,width=73,height=17] : Correspond à l’ensemble des états/statuts par lesquels un objet va pouvoir passer ou non et les transitions autorisées entre chaque état/statut, (par ex interdire de revenir sur un état validé si l’objet a été supprimé, ou au contraire autoriser un retour arrière de l’état dans le cadre d’un workflow…), dans le schéma, cela s’apparente à cette partie :
+
+image::image140.png[image,width=301,height=207]
+
+image::image143.png[image,width=114,height=16] : Permet de définir un modèle de structure hiérarchique : pour simplifier, il est possible d’associer la création automatique d’autres objets rattachés hiérarchiquement à l’objet initial lors de sa création.
+
+__Exemple__ : Dans la suite PLIM, la création d’un objet ‘parent’ de type ‘Projet R&D’ va conditionner la création automatique d’un certain nombre d’autres documents, comme notamment une demande d’échantillon, une fiche de lancement, un rapport de test industriel…etc. Chaque nouveau projet créé se verra donc systématiquement accompagné de plusieurs documents liés.
+
+image::image144.png[image,width=141,height=144]
+
+[[paramétrage-dun-schéma]]
+== Paramétrage d’un « Schéma » :
+
+Un certain nombre de schémas (structure de table) standards existent déjà dans l’application__. Ils ne doivent en aucun cas être modifiés ou supprimés sous peine de rendre l’application inopérante__. Il est donc nécessaire de créer nouveaux schémas personnalisés pour gérer de nouveaux champs spécifiques.
+
+Pour rajouter de nouveaux champs sur un écran existant, il est donc nécessaire de créer de nouveaux schémas personnalisés et spécifiques à l’application client.
+
+image::image145.png[image,width=648,height=229]
+
+- Naviguer dans le menu image::image146.png[image,width=64,height=16]
+
+- Cliquer sur le bouton image::image147.png[image,width=50,height=23]
+
+image::image148.png[image,width=514,height=184]
+
+- Indiquez le nom de votre schéma (table) dans la ligne « Feature ID »
+
+- Indiquer un préfixe (alias court) de votre schéma (utilisé par ex. pour la reprise de données)
+
+Conseils :
+
+* Utilisez des libellés possédant un préfixe personnalisé constant sur chaque schéma que vous allez créer afin d’identifier plus facilement les schémas que vous avez créé (ex v pour schémas vif)
+* Pour les préfixes, utilisez des libellés très courts (~ 3/4 lettres) et vérifiez qu’un schéma ayant un nom similaire ne possède pas le même préfixe.
+
+Une fois le schéma créé, un écran va permettre de définir les colonnes de la table avec pour chacune d’entre elle des propriétés de base qui vont conditionner leur comportement dans l’application :
+
+image::image149.png[image,width=693,height=290]
+
+Chaque ligne définie dans cet écran correspond à une colonne de table dans la base de données. Les lignes de chaque table correspondent par conséquent à chaque enregistrement (chaque MP, chaque EMB, chaque PF…)
+
+image::image150.png[image,width=346,height=250] image::image151.png[image,width=322,height=131]
+
+______________________________________________________________________________________________________________________________________
+*Paramétrage* *Base de données*
+
+image::image152.png[image,width=174,height=37] image::image153.png[image,width=77,height=37]
+______________________________________________________________________________________________________________________________________
+
+Lors de la création d’un schéma, il est possible de définir un format de contenu (texte, numérique, date…etc). Il s’agit d’un premier niveau de paramétrage, car il est ensuite possible d’affiner la gestion du contenu, par exemple une chaîne texte (String) pourra aussi bien se comporter comme une liste déroulante (appel à un vocabulaire) qu’un champ texte standard.
+
+L’ajout d’une nouvelle colonne dans la base de donnée (= ligne dans un schéma Studio) doit se faire de la façon suivante :
+
+- Cliquez sur « Add field » :
+
+image::image154.png[image,width=534,height=129]
+
+- Une nouvelle ligne apparaît en base de l’écran :
+
+image::image155.png[image,width=627,height=49]
+
+- Cette ligne peut alors être configurée selon le type donnée à gérer :
+
+image::image156.png[image,width=627,height=86]
+
+[[paramétrage-dun-document]]
+== Paramétrage d’un « Document » :
+
+Comme indiqué précédemment, un document est donc un « assemblage » de plusieurs « Schémas » (tables en base données). Il est important de bien dissocier cette partie avec le paramétrage des écrans qui sera traité dans les paragraphes suivants : La définition d’un « Document » ne correspond pas obligatoirement à l’écran final que verra l’utilisateur, ce n’est parce qu’une table est définie sur un document que les champs qui la composent seront affichés à l’écran. En effet, certaines tables peuvent être systématiquement cachées (tables systèmes), d’autres visibles uniquement à l’écran sous certaines conditions (fonction des droits par ex.)…
+
+Il existe par défaut de nombreux « documents » paramétrés dans l’application couvrant l’ensemble des besoins utilisateurs (Matières premières, emballages, produits finis…). Dans ce paragraphe ne sera donc pas décrite la procédure de création d’un nouveau document puisque dans la grande majorité des cas, une personnalisation des documents existants permet de répondre aux besoins spécifiques.
+
+Dans le paragraphe précédent, nous avons vu la création d’un ou plusieurs schéma(s) personnalisé(s) que nous allons donc pouvoir ajouter à un ou plusieurs documents afin de pouvoir faire apparaître par la suite de nouveaux champs sur les écrans.
+
+image::image157.png[image,width=151,height=416] image::image158.png[image,width=160,height=453]
+
+Le schéma ci-dessus montre un exemple « d’assemblage » pour un document « rawMaterial » (Matière première). Le but va donc être d’associer le nouveau schéma créé précédemment à ce document ou tous ceux sur lesquels il faudra gérer de nouvelles informations du même type.
+
+En naviguant sur le document « rawMaterial », le premier écran visible se présente ainsi :
+
+image::image159.png[image,width=696,height=283]
+
+**Extends** : Correspond au type « technique » de document, s’il s’agit d’un « Item », d’un « Folder ».. Ce choix permet de définir de nombreux comportements dans l’application. Par défaut sur la majorité des documents de type ‘articles’ (MP, EMB, PF…), il s’agit « d’Item ».
+
+**Label** : Correspond au nom du document dans l’application. L’application étant multilingue, un libellé technique (ex. ici 33660) est indiqué afin de pouvoir gérer le libellé dans différentes langues.
+
+**Category** : Comme pour la première zone, ce champ permet de conditionner un comportement dans l’application en choisissant une catégorie. Par défaut, il s’agit là aussi « d’Item ».
+
+**Icon** : Permet de sélectionner l’aspect visuel (icône) du document dans l’application
+
+**Large Icon** : Même fonctionnement que précédemment mais pour un affichage « grand format »
+
+**Description** : Correspond généralement au libellé du document, permet d’ajouter une description plus détaillée dans l’application.
+
+**Default view** : Réservé aux développeurs.
+
+**LifeCycle** : Permet de choisir le cycle de vie (succession d’états) applicable au document
+
+**Container types** : Permet de définir les types (techniques) de répertoires dans lesquels pourront être présents ces documents (par ex. projets R&D, répertoires R&D…)
+
+**Remarque** : Sur cette première partie de l’écran d’un document, __il est fortement recommandé de ne modifier aucun des paramétrages réalisés sous peine de déstabiliser l’application__. Seul le LifeCycle peut éventuellement être modifié pour appeler un cycle de vie personnalisé, mais cela doit rester cohérent avec l’utilisation prévue du document.
+
+Sur la deuxième partie de l’écran, nous retrouvons le paramétrage suivant :
+
+image::image160.png[image,width=691,height=287]
+
+**Document facets** : Les « facettes » correspondent à une « brique » contenant un ensemble de réglages permettant de conditionner un comportement spécifique du document dans l’application. Un exemple représentatif pourrait être celui de la facette « UsableInRecipe » qui signifie littéralement que ce document pourra être « utilisable dans une recette ». Ces facettes permettent de simplifier le paramétrage puisqu’elles contiennent de nombreux réglages déjà paramétrés, ainsi en activant ou pas une facette on applique ou pas ces réglages, permettant d’éviter de devoir le refaire manuellement sur chaque document.
+
+**Inherited schemas** : Par défaut chaque document « hérite » d’un certain nombre de schémas de base. Cet héritage est apporté par la sélection du type de document (par ex. : tous les ‘Items’ auront la même série de schémas hérités : files, vItemGeneral, common…etc).
+
+**Add extra schemas** : Il s’agit de l’axe de paramétrage le plus important sur un document puisque c’est ici que sont associés les schémas. Sur la partie de gauche sont présentés tous les schémas disponibles, et sur la partie de droite sont présentés les schémas utilisés/appliqués sur le document.
+
+Pour personnaliser votre document, recherchez votre schéma à gauche :
+
+image::image161.png[image,width=700,height=88]
+
+Puis insérez-le à droite dans la définition de votre objet.
+
+image::image162.png[image,width=692,height=76]
+
+Votre document est à jour, pensez à sauvegarder les modifications !
+
+Présentation synthétique des autres onglets d’un « Document » :
+
+**Schéma** : Permet de gérer un schéma directement sur l’objet, sans passer par un schéma indépendant. __Utilisation/modification fortement déconseillé__.
+
+image::image163.png[image,width=529,height=127]
+
+**Tabs** : Ce menu permet de paramétrer l’affichage ou non des onglets présents sur l’objet. Par défaut, tous les onglets sont affichés. Il est maintenant possible de masquer certains onglets depuis cette interface.
+
+image::image164.png[image,width=529,height=133]
+
+image::image165.png[image,width=625,height=59]
+
+**Creation / View / Edit / Header Layout** : Permet de définir l’écran à présenter en phase de création / visualisation / édition de l’objet. _Utilisation/modification fortement déconseillé._
+
+image::image166.png[image,width=529,height=168]
+
+[[paramétrage-dun-cycle-de-vie]]
+== Paramétrage d’un « Cycle de vie » :
+
+Le cycle de vie correspond aux enchainements d’états sur un document. Il permet notamment de gérer les « transitions », c’est-à-dire les successions possibles et autorisés d’un état à l’autre pour par exemple savoir s’il est possible de faire un retour arrière ou si au contraire cet état est définitif et sans retour.
+
+Par défaut dans l’application il existe 2 Life Cycles, le premier applicable et commun aux différents objets de type « articles » (MP, EMB, PF), l’autre applicable aux objets de type « Projets ».
+
+Pour personnaliser les états d’un objet déjà paramétré, il est donc recommandé de créer un nouveau cycle de vie, qu’il faudra associer au(x) document(s), pour cela se référer au paragraphe précédent une fois le cycle de vie créé.
+
+Exemple de cycle de vie pré-paramétré :
+
+image::image167.png[image,width=627,height=385]
+
+Comme de nombreuses zones, les états peuvent être gérés en multilingues, par conséquent la lecture n’est pas simple au premier regard et nécessite la présence en parallèle du fichier de ressources de langue fourni durant la formation.
+
+Chaque *« bloc »* correspond à un **état**, et chaque *« liaison »* entre ces blocs correspond à une *transition,* c’est-à-dire le passage d’un état à un autre.
+
+Il est possible de paramétrer plusieurs transitions d’entrées et de sorties pour chaque état, permettant ainsi de gérer différents cas de figure selon le comportement voulu.
+
+La création d’un nouveau cycle de vie se déroule de la façon suivante :
+
+- Cliquez sur « New »
+
+image::image168.png[image,width=226,height=86]
+
+- Indiquez le nom de votre LifeCycle :
+
+image::image169.png[image,width=256,height=137]
+
+- La page de création suivante apparaît :
+
+image::image170.png[image,width=625,height=176]
+
+- Définissez à minima un « initial state » (état initial) en choisissant le bloc gris foncé dans le menu, puis avec un clic gauche de souris, « déposez » ce premier bloc dans la zone d’édition (fond blanc) situé en dessous :
+
+image::image171.png[image,width=289,height=240]
+
+- Cliquez alors sur le bouton d’édition de votre bloc pour renseigner le nom de l’état voulu :
+
+image::image171.png[image,width=96,height=68] image::image172.png[image,width=227,height=236]
+
+- Procédez ainsi pour les états suivants, en choisissant cette fois les blocs « State » gris clairs.
+
+image::image173.png[image,width=247,height=207]
+
+- Une fois vos états définis, il va falloir gérer les « transitions », c’est-à-dire les changements d’états autorisés. Pour cela positionnez-vous sur un des bloc, le premier en l’occurrence, et cliquez sur la flèche noire du menu. Un « trait » noir va apparaître vous permettant de relier un bloc avec un autre.
+
+image::image174.png[image,width=93,height=66] image::image175.png[image,width=300,height=68]
+
+- Une fois la relation établie, le lien se fige, votre souris se libère et il apparaît un « point » noir au milieu du lien, permettant de faciliter la lecture lorsque de nombreux liens apparaitront. Il suffit pour cela de
+
+image::image176.png[image,width=281,height=61] image::image177.png[image,width=290,height=97]
+
+Comme pour les états, il est nécessaire de définir un libellé pour chaque transition établie. Pour cela, positionnez-vous sur le « point » et cliquez sur le bouton d’édition.
+
+image::image178.png[image,width=310,height=94] image::image179.png[image,width=248,height=233]
+
+Indiquez alors un nom suffisamment clair permettant d’identifier rapidement et facilement le changement d’état opéré. Ce libellé est d’autant plus important que c’est celui qui sera exploité au niveau des processus pour gérer les changements d’état entre chaque étape.
+
+Pensez à utiliser les mêmes noms de transitions lorsque vous revenez vers un même état, par exemple toutes les transitions revenant vers l’état « Création » pourraient se nommer « TO_CREATION »
+
+image::image180.png[image,width=442,height=278]
+
+**Remarques** :
+
+* Le nom des états ne peut contenir que des caractères simples (pas d’accents) et sans espace entre les mots (par ex. EN CREATION n’est pas possible, il faudra saisir EN_CREATION ou EN.CREATION).
+* Par conséquent il est recommandé d’utiliser des noms simples en majuscules, le cas échéant il est possible d’obtenir des libellés complets avec accents et espaces en utilisant des noms techniques (traduits), il faudra pour cela les ajouter au fichier de ressources de langues.
+a.  [[paramétrage-dun-vocabulaire]]
+== Paramétrage d’un « Vocabulaire » :
+
+Les vocabulaires correspondent aux listes de valeurs appelées dans certains champs de l’application. Il en existe plusieurs dizaines pré paramétrés dans l’application. Par exemple sur la page principale d’un article, le champ « Unité » va faire appel à un vocabulaire « Liste des unités »…
+
+Comme indiqué précédemment, il est possible d’enrichir le contenu de ces listes directement depuis l’interface d’administration de l’application PLIM. Néanmoins, la création d’un nouveau vocabulaire passe nécessairement par l’application « Studio », dans la rubrique « Vocabulary ».
+
+- Cliquez sur « New »
+
+image::image181.png[image,width=188,height=136]
+
+- Saisissez le nom de votre nouveau vocabulaire puis choisissez dans la liste un type :
+
+image::image182.png[image,width=340,height=283]
+
+**Simple vocabulary** : Il s’agit d’une liste simple standard
+
+**Child vocabulary** : Il est possible de lier 2 listes ou plus les unes aux autres pour conditionner un enchainement de valeur. Par exemple, on choisit une valeur dans une liste 1, cela conditionne le choix dans la liste 2. Cette liste 2 est donc une liste « enfant » (Child), c’est-à-dire qu’elle est liée à liste 1 qui est une liste « parent ».
+
+**Hierarchical vocabulary** : Ce type de vocabulaire permet de créer directement des listes liées (parents/enfants). Il est toujours possible de rajouter unitairement des liaisons entre liste en choisissant le type précédent.
+
+Une fois créé, il peut être immédiatement déployé (voir procédure de déploiement), les données devront alors être saisies manuellement dans l’interface d’administration du PLIM.
+
+Cependant, il est possible depuis la page « Studio » de réaliser certaines opérations complémentaires avant le déploiement :
+
+* Initialiser la liste avec des valeurs par défaut
+* Importer en masse des données à partir d’un fichier .CSV (type tableur)
+
+image::image183.png[image,width=626,height=135]
+
+Pour initialiser des valeurs par défaut, il suffit de compléter le tableau en renseignant un code (Id) et un libellé pour chaque valeur. Il est également possible de spécifier un ordre (Colonne Order) de proposition de valeurs si l’ordre doit être différent de celui proposé par défaut par l’application (alphabétique).
+
+image::image184.png[image,width=627,height=91]
+
+**Id** : Correspond au code, abréviation ou acronyme de la valeur (01, VAL1…etc)
+
+**Label** : Correspond au libellé de la valeur (Valeur 1, Valeur 01…etc)
+
+**Obsolete** : Permet de marquer une valeur comme obsolète, évitant ainsi de la supprimer (conservation de l’historique)
+
+**Order** : Ordre d’affichage des valeurs dans la liste. Par défaut ordre alphabétique.
+
+La colonne « **Creation Policy »** permet de spécifier le comportement du vocabulaire lors des déploiements :
+
+* **On missing Columns** : Si des valeurs par défaut ont été ajoutées dans Studio et que côté application d’autres valeurs ont été saisies, le système va faire un regroupement des deux afin de ne pas perdre les données saisies des 2 côtés.
+* **Always** : En choisissant ce mode, toutes les valeurs utilisateurs seront systématiquement effacées et remplacées par les valeurs par défaut à chaque déploiement.
+* **Never **: Les données utilisateurs saisies sont conservées et ne seront jamais complétées ou remplacées par les valeurs par défaut issues de la définition Studio.
+
+**Recommandations** :
+
+* Par défaut la majorité des vocabulaires sont configurés en mode « On Missing Columns » de façon à gérer les évolutions apportées côté Studio tout en gardant les saisies utilisateurs dans l’application.
+* Le mode « Always » est fortement déconseillé dans la mesure où il peut faire perdre toutes les données saisies par les utilisateurs. Ce mode est cependant utilisé exceptionnellement lors de la reprise de données pour initialiser l’application à partir de fichiers d’import.
+
+**Import de valeurs en masse** :
+
+* Dans la mesure où seule une saisie unitaire manuelle est possible dans l’application, une fonction d’import de données en masse est disponible côté Studio permettant d’initialiser une base à partir de fichiers de reprises.
+* Pour faciliter cette reprise, la fonction d’import propose à l’utilisateur de télécharger un modèle au format attendu. Pour cela cliquez sur « Import CSV » :
+
+image::image185.png[image,width=627,height=281]
+
+* Cliquez le lien hypertexte « __Download__ a sample… »
+* Un fichier va être téléchargé sur votre poste image::image186.png[image,width=153,height=24]
+* Vous pouvez alors l’éditer (tableur ou bloc-notes) pour mettre à jour le contenu selon le format attendu et donné en exemple dans le fichier téléchargé :
+
+_______________________________________________________________________________________________________________________________________
+image::image187.png[image,width=167,height=74] image::image188.png[image,width=213,height=68]
+_______________________________________________________________________________________________________________________________________
+
+* Une fois votre fichier complété, vous pouvez alors l’importer en sélectionnant son emplacement sur votre poste depuis « Choisissez un fichier », puis cliquez sur « Import » :
+
+image::image189.png[image,width=515,height=240]
+
+* Les données importées apparaissent alors dans le tableau.
+
+image::image190.png[image,width=627,height=108]
+
+**Rappels** :
+
+* Ces données n’apparaitront dans l’application qu’une fois le déploiement effectué. Vérifiez bien au préalable le mode de déploiement souhaité (On Missing Columns, Always…).
+* Dans le cas d’un déploiement pour une initialisation de l’application (reprise de données), choisissez le mode « Always » si vous avez déjà quelques données de tests que vous ne souhaitez pas garder ou « On Missing Columns » si des données sont déjà présentes et à conserver.
+* Pensez bien à revenir sur un état « On Missing Columns » ou « Never » une fois le déploiement réalisé, ceci afin d’éviter une perte d’informations.
+a.  [[principaux-concepts-sur-laffichage-et-les-écrans]]
+== Principaux concepts sur l’affichage et les écrans :
+
+L’ensemble des paragraphes précédents ont permis de voir la construction du modèle de données, c’est-à-dire les informations à gérer, mais en aucun cas il n’a été question de la façon dont ces informations sont présentées dans l’application.
+
+L’objectif de ce chapitre est donc d’expliquer les différents axes de paramétrage de l’affichage, des écrans utilisateurs…Toute cette partie étant gérée dans la thématique « Listings & Views » :
+
+image::image191.png[image,width=139,height=129]
+
+image::image191.png[image,width=112,height=22] : Permet de configurer des modèles de recherches avancées (zones de recherches, types de résultats…).
+
+image::image191.png[image,width=112,height=16] : Permet de paramétrer l’affichage des résultats de recherche, les types de colonnes…etc. Par exemple affichage de la colonne « Code » et « Libellé » en premier, puis au niveau du résultat de la recherche il a été choisi de ne pas faire apparaître les éléments « Supprimés » dans la liste.
+
+image::image191.png[image,width=93,height=15] : Correspondent à la construction des écrans et l’affichage voulu en fonction du type d’informations à faire apparaître. Par exemple, un formulaire pour les « Nutriments » permettant de faire apparaître sur ‘X’ lignes et ‘N’ colonnes les champs du schéma « Nutriments »… Il s’agit de la représentation graphique de tout ou partie des informations de la base de données.
+
+image::image191.png[image,width=69,height=21] : Correspondent à des regroupements d’informations sous forme d’onglets. Chaque « Tab » peut faire appel à une ou plusieurs « Layouts ».
+
+image::image191.png[image,width=89,height=18] : Permettent de gérer des modèles d’affichage pour les résultats issus des « Content Views ». Un modèle peut ainsi être appelé depuis plusieurs résultats de recherche, permettant ainsi d’éviter d’avoir à paramétrer unitairement un écran identique.
+
+image::image191.png[image,width=113,height=15] : Non développé dans ce manuel, réservé à des développeurs.
+
+[[paramétrage-dune-recherche-avancée]]
+== Paramétrage d’une « Recherche avancée »
+
+Une recherche avancée correspond à un écran personnalisé permettant d’afficher les zones sur lesquelles les utilisateurs souhaitent rechercher des informations. Chaque zone se cumule à une autre, permettant ainsi d’élaborer des requêtes complexes de façon simple pour un utilisateur.
+
+image::image192.png[image,width=642,height=284]
+
+Seul un modèle peut-être paramétré, il n’est pas possible à ce jour de créer plusieurs modèles de recherche avancée. Par conséquent, si le formulaire de recherche par défaut ne convenait pas, il sera donc nécessaire de le modifier pour y intégrer les champs supplémentaires sur lesquels les utilisateurs souhaitent requêter.
+
+Dans Studio, l’écran de construction du formulaire se présente ainsi :
+
+image::image193.png[image,width=642,height=361]
+
+- La partie centrale représente l’affichage des zones à l’écran *(1)*
+
+- La partie de droite représente l’ensemble des champs disponibles dans les schémas *(2)*
+
+image::image193.png[image,width=389,height=219]
+
+La méthode pour ajouter des zones sur le formulaire de recherche consiste à « piocher » les zones dans la partie de droite et à les insérer sur l’écran central. Pour cela, il est nécessaire dans un premier temps d’ajouter de l’espace supplémentaire sur l’écran en cliquant sur image::image194.png[image,width=128,height=15]
+
+Cela pour effet d’ajouter autant de lignes ou colonnes vides que de clics effectués :
+
+image::image195.png[image,width=627,height=72]
+
+Ces nouveaux espaces apparaissant par défaut en bas de page, il est cependant possible de réorganiser l’affichage en cliquant sur le bouton d’édition des espacesimage::image196.png[image,width=16,height=16], un menu apparaît alors permettant de déplacer, supprimer ou ajouter de nouvelles lignes.
+
+image::image197.png[image,width=456,height=153]
+
+Une fois l’espace créé, la ou les nouvelles zones de recherches peuvent être déposées par un glisser/déposer depuis la bibliothèque de champs disponibles dans le panneau de droite.
+
+Dans un premier temps, il est nécessaire de sélectionner le schéma dans lequel se trouve la ou les zones à rajouter, cela aura alors pour effet de présenter la liste complète des champs de ce schéma :
+
+_________________________________________________________________________________________________________________________________________
+image::image198.png[image,width=165,height=377] image::image199.png[image,width=132,height=377]
+_________________________________________________________________________________________________________________________________________
+
+Une fois le champs identifié, il suffit de le sélectionner (clic gauche) puis de maintenir le clic sur la souris pour effectuer un glisser/déposer depuis la bibliothèque vers l’espace créé précédement.
+
+image::image201.png[image,width=680,height=131]
+
+Il convient de procéder ainsi pour toutes les zones à rajouter dans le formulaire de recherche, il est ensuite toujours possible de repositionner ces champs à l’écran en procédant à l’identique.
+
+image::image202.png[image,width=627,height=100]
+
+Une fois le champ déposé, une fenêtre popup apparaît permettant de personnaliser la zone en fonction du type de recherche à effectuer :
+
+image::image203.png[image,width=424,height=419]
+
+Le seul paramètre réellement important au niveau de cet écran est le type d’opérateur (Operator) utilisé pour effectuer la recherche. Tous les autres critères sont facultatifs, y compris le ‘Widget Type’ qui est automatiquement défini en fonction du type de donnée défini dans le schéma (Text, numérique, booléen…)
+
+La liste des opérateurs proposés est :
+
+**=** : Strictement égal à
+
+**!=** : Strictement différent de
+
+**LIKE** : Contient (sensible à la casse)
+
+**ILIKE** : Contient (insensible à la casse)
+
+**NOT LIKE** : Ne contient pas (sensible à la casse)
+
+**NOT ILIKE** : Ne contient pas (insensible à la casse)
+
+**STARTSWITH** : Commence par
+
+**IN** : Est contenu dans
+
+**BETWEEN **: Est contenu entre 2 valeurs
+
+**FULLTEXT ALL** : Recherche plein texte
+
+**>** : Supérieur à
+
+**<** : Inférieur à
+
+Pour plus de flexibilité, c’est généralement l’opérateur ILIKE qui est utilisé afin de ne pas restreindre le périmètre de recherche.
+
+[[paramétrage-dun-formulaire]]
+== Paramétrage d’un « Formulaire » :
+
+Les « Form Layouts » correspondent à la mise en page des écrans utilisateurs. Il existe 3 grandes catégories de formulaires permettant de personnaliser les écrans en fonction du contexte dans lesquels se trouve l’utilisateur (phase de création visualisation ou édition) :
+
+Exemple de formulaire de « **Création** » pour une MP : Seuls quelques champs apparaissent
+
+image::image204.png[image,width=627,height=162]
+
+Exemple de formulaire de « **Visualisation **» pour une MP : Tout ou partie des champs apparaissent
+
+image::image205.png[image,width=528,height=260]
+
+Exemple de formulaire « d’**Edition **» pour une MP : Tout ou partie des champs apparaissent
+
+image::image206.png[image,width=627,height=207]
+
+Dans l’absolu, les 3 écrans peuvent être identiques, que ce soit en phase de création, visualisation ou édition, cependant cette possibilité permet dans certains cas d’améliorer l’ergonomie ou la rapidité de saisie des informations.
+
+Le paramétrage de ces écrans est quasiment identique à celui des écrans de la recherche avancée, le principe est le même : Création d’espace pour insérer de nouvelles zones, sélection des zones dans un schéma puis glisser/déposer de la zone vers l’espace créé sur le formulaire (voir procédure détaillée dans le paragraphe précédent).
+
+image::image207.png[image,width=642,height=219]
+
+Des différences importantes sont cependant à prendre en compte :
+
+* Ce paramétrage doit être réalisé sur les 3 grands types d’écran (création, visu, édition). Attention, en raison de la présence de développements spécifiques dans les layouts standards du PLIM, il est fortement déconseillé d’utiliser la fonction image::image208.png[image,width=75,height=15] permettant de copier le paramétrage d’un layout vers un autre. Cette fonction peut éventuellement être utilisée sur des layouts simples et personnalisés.
+
+___________________________________________________________________
+image::image207.png[image,width=270,height=81]
+___________________________________________________________________
+
+* A noter également, que dans l’application PLIM actuelle, les layouts de « Création » et ceux de « Visualisation » et « Edition » ont été séparés dans 2 formulaires distincts. Il s’agit d’une conséquence d’un paramétrage initial réalisé ainsi en raison de contraintes techniques sur les premières versions de l’application.
+
+______________________________________________________________________________________________________________________________________________________________________________
+Ainsi, pour les MP on retrouve (identique sur PK et PF)
+
+image::image209.png[image,width=106,height=19] dans lequel seul l’onglet image::image207.png[image,width=92,height=25] est paramétré
+
+image::image210.png[image,width=86,height=16] dans lequel les onglets image::image207.png[image,width=149,height=24] sont paramétrés
+______________________________________________________________________________________________________________________________________________________________________________
+
+* Toujours en comparaison avec le formulaire de recherche avancé, le paramétrage des zones va être plus poussé :
+
+Exemple sur un champ de type « Texte » simple :
+
+image::image211.png[image,width=232,height=226] image::image212.png[image,width=231,height=226]
+
+Exemple sur un champ de type « Liste » (vocabulaire) :
+
+image::image213.png[image,width=232,height=226] image::image214.png[image,width=231,height=226]
+
+Exemple sur un champ de type « Nombre entier » :
+
+image::image215.png[image,width=232,height=226] image::image216.png[image,width=232,height=226]
+
+Pour chaque type de zone, un menu contextuel apparaît permettant de paramétrer en détail le comportement attendu. Par exemple si le champ est en lecture seul, s’il peut être multilingue, ou encore le lien vers le « vocabulaire » dans le cas d’un champ présentant une liste de valeurs.
+
+**Détail du paramétrage** :
+
+image::image213.png[image,width=309,height=302]
+
+**Label** : Correspond au libellé de la zone dans l’application. Il peut être différent du libellé défini dans le schéma et peut également être traduit (cas présenté ci-dessus), il est dans ce cas nécessaire d’utiliser des libellés ‘techniques’ et d’enrichir le fichier de langues.
+
+**Help label** : Correspond au libellé d’aide (infobulle) affiché lors du passage de la souris au-dessus du champ. Il permet d’apporter de l’information complémentaire destinée à faciliter la compréhension de l’utilisateur.
+
+**Translated** : Permet de gérer le caractère multilingue de la zone.
+
+**Read only** : Permet de passer le champ en lecture seule
+
+**Hide label** : permet de cacher le libellé de la zone en ne faisant apparaître que la valeur
+
+**Field **: Indique le champ utilisé pour le stockage et l’affichage de la valeur (schema:champ)
+
+**Widget type** : Indique le type de zone (liste, texte, numérique…)
+
+image::image217.png[image,width=147,height=188]
+
+Dans le cas particulier d’un vocabulaire, un assistant permet de sélectionner le vocabulaire devant être appelé depuis la zone. Pour cela cliquez sur « Choose vocabulary » et sélectionnez le vocabulaire voulu dans la liste proposée
+
+image::image213.png[image,width=310,height=98] image::image218.png[image,width=144,height=188]
+
+Il est ensuite possible de configurer d’autres paramètres :
+
+image::image219.png[image,width=361,height=290]
+
+**Required** : Obligatoire ou non
+
+**Localize** : Contenu traduit si activé (référence au fichier de langue)
+
+**Display id and label** : Affiche le code et le libellé du vocabulaire
+
+**Display obsolete entries** : Affiche les enregistrements obsolètes si activé
+
+**Do not display the default option** : Si activé, affiche un message « Veuillez sélectionner une valeur » plutôt que la première valeur par défaut.
+
+**Sort criterion** : Choix du critère d’affichage (libellé, ordre, id…)
+
+Les autres paramètres ne seront pas détaillés dans ce document.
+
+**Remarque importante** :
+
+Certains écrans ont été graphiquement retravaillés pour présenter un affichage plus convivial à l’utilisateur. Le paramétrage standard disponible n’étant pas suffisant pour arriver à ce type de rendu, certains layouts font appels à des pages spécifiques.
+
+C’est le cas notamment des écrans de caractéristiques que l’on retrouve sur les articles (MP,PK, PF…) avec un affichage sous forme de tableau pour les allergènes, les nutriments…etc
+
+image::image220.png[image,width=627,height=237]
+
+Dans ce cas de figure, la zone est différente et fait appel directement à une page plus élaborée, le type de widget étant cette fois-ci configuré en « Template » et un lien vers la page établit au travers d’un assistant.
+
+image::image221.png[image,width=387,height=377]
+
+Il est par conséquent _fortement déconseillé de modifier ce paramétrage_ sur les layouts standards.
+
+[[paramétrage-dun-onglet]]
+== Paramétrage d’un « Onglet » :
+
+Les onglets (Tabs) permettent de regrouper plusieurs zones d’informations en faisant appel à plusieurs layouts.
+
+Concrètement dans l’application, il s’agit d’un écran de ce type , dans lequel plusieurs rubriques et différents d’écrans vont être présentés dans une même page. Pour chaque écran on retrouvera un titre de chapitre et un contenu (la layout).
+
+image::image222.png[image,width=609,height=302]
+
+La configuration d’une « Tab » se compose donc d’une succession de ‘chapitres’. Pour chacun il est nécessaire d’insérer un entête de chapitre (le titre), le composant utilisé et un « Container » puis un contenu, cette fois-ci le composant utilisé et un « Toggleable form ».
+
+image::image223.png[image,width=627,height=289]
+
+**Détail d’une ligne de « Titre »** : Les lignes de titre correspondent à des blocs de type « Container » (sélection dans le panneau de droite / More Widgets / Advanced Widgets)
+
+image::image224.png[image,width=273,height=264]
+
+**Détail d’une ligne de « Contenu »** : Les lignes de contenu correspondent à des blocs de type « Toggleable form » faisant appel à une « layout ». A noter que ces zones ne possèdent pas de libellé puisque le titre est géré dans la ligne précédente.
+
+image::image225.png[image,width=228,height=226]
+
+image::image226.png[image,width=229,height=226] image::image227.png[image,width=230,height=226]
+
+[[paramétrage-des-tableaux-de-résultats]]
+== Paramétrage des « Tableaux de résultats »
+
+Les « Table Layouts » permettent de personnaliser l’affichage des résultats de recherche (Content Views) en l’occurrence l’ordre et le type des colonnes.
+
+Le paramétrage est similaire à celui d’un formulaire de recherche avancée, les colonnes sont définies par des glisser/déposer de zones depuis une bibliothèque.
+
+image::image228.png[image,width=627,height=261]
+
+[[paramétrage-des-naviguation-virtuelle]]
+== Paramétrage des « Naviguation virtuelle » :
+
+Cette fonctionnalité n’est pour le moment pas disponible dans la version actuelle de l’application.
+
+[[paramétrage-des-processus]]
+== Paramétrage des « Processus » :
+
+Un « Workflow » correspond à un ensemble d’étapes successives ou parallèles dans lequel va pouvoir être engagé un document. Au cours de ces différentes étapes il va être diffusé, les intervenants vont être notifiés, puis ils pourront agir sur le contenu du document. Durant toute ce processus le document va pouvoir évoluer et changer d’état, des mécanismes vont pouvoir être lancés…En résumé, les Workflows dans l’application vont servir à orchestrer, canaliser et fiabiliser les informations présentent sur chaque document. Ils peuvent complexes ou très simple comme le montre la représentation ci-dessous :
+
+image::image229.png[image,width=185,height=368]
+
+Il existe également dans cette rubrique des modèles pré-paramétrés pouvant être utilisés en l’état, cependant si c’est modèle ne convenaient pas, il est possible de créer autant de nouveaux types de processus que nécessaire.
+
+La procédure de création se déroule de la façon suivante :
+
+- Cliquez sur New
+
+image::image230.png[image,width=471,height=224]
+
+- Donnez un identifiant, un nom et éventuellement une description à votre modèle de processus
+
+image::image231.png[image,width=515,height=428]
+
+L’onglet *« Definition »* vous permet de revenir sur les informations générales saisies précédements (libellé, description…) :
+
+image::image232.png[image,width=627,height=211]
+
+L’onglet *« Variables »* permet de gérer des zones spécifiques et propres à votre workflow. Ces variables peuvent correspondre à des zones issues des documents, ou plus généralement à des zones de stockage d’informations uniquement présentes dans le Workflow.
+
+image::image233.png[image,width=627,height=173]
+
+L’onglet *« Availability »* permet de définir les conditions dans lesquelles le Workflow sera visible et disponible en fonction de plusieurs paramètres comme par exemple les droits des utilisateurs, le type de document, la personne à l’origine du lancement etc…
+
+image::image234.png[image,width=627,height=340]
+
+*Détail des zones de cet onglet :*
+
+**Current user has one of the permissions** : Permet de définir quelles sont les droits à minima que doit avoir un utilisateur pour pouvoir executer un Workfow (par ex. au moins lecture, ou au moins lecture ET écriture).
+
+**Current document has one of the types** : Permet de spécifier le type de document sur lequel le processus sera disponible et pourra être exécuté.
+
+*Current document has facet* : Permet de conditionner la disponibilité du Workflow en fonction d’une facette du document.
+
+*Current document has LifeCycle* : Permet de conditionner la disponibilité du Workflow en fonction du cycle de vie du document.
+
+*Document path starts with* : Permet de conditionner la disponibilité du Workflow en fonction de l’environnement dans lequel se trouve le document.
+
+*Current document is* : Permet de conditionner la disponibilité du Workflow en fonction de la typologie du document.
+
+*Current user is member of* : Permet de conditionner la disponibilité du Workflow en fonction du groupe d’appartenance de l’utilisateur.
+
+*Current user is administrator* : Si cochée, permet de conditionner la disponibilité du Workflow uniquement aux membres du groupe « Administrateurs ».
+
+*Selection is not empty* : Permet de conditionner la disponibilité du Workflow en fonction de la présence de l’objet dans la sélection (presse-papiers)
+
+*Custom EL expression* : Permet de conditionner la disponibilité du Workflow en fonction d’une multitude d’autres critères définis sous forme d’une expression MVEL (langage de scripting)
+
+L’onglet *« Graph »* permet de concevoir graphiquement le Workflow par l’utilisation de ‘blocs’ et de liens entre chaque ‘blocs’.
+
+Cet écran se présente en 2 grandes parties
+
+* La partie de gauche contient différents types de ‘blocs’
+* La partie de droite est la zone dans laquelle sont déposés les blocs sélectionnés
+
+image::image235.png[image,width=627,height=432]
+
+**Lexique des ‘blocs’ **:
+
+image::image236.png[image,width=83,height=18] : Permet d’agrandir la zone d’édition du Workflow (située à droite)
+
+image::image237.png[image,width=69,height=17] : permet d’effacer complétement votre zone d’édition
+
+image::image238.png[image,width=45,height=16] : Type de bloc ‘simple’, très peu paramétrable et par conséquent peu utilisé
+
+image::image239.png[image,width=87,height=16] : Type de bloc ‘accepter/refuser’ pré paramétrée
+
+image::image240.png[image,width=57,height=16] : Type de bloc ‘approuver’ pré paramétrée
+
+image::image241.png[image,width=72,height=16] : Type de bloc ‘simple’, entièrement paramétrable
+
+image::image242.png[image,width=72,height=14] : Type de bloc ‘fourche 2 sorties’ permettant de diriger une tâche vers 2 autres tâches
+
+image::image243.png[image,width=72,height=16] : Type de bloc ‘fourche 3 sorties’ permettant de diriger une tâche vers 3 autres tâches
+
+image::image244.png[image,width=44,height=14] : Type de bloc ‘fusion’, permettant de rassembler plusieurs tâches vers 1 seule tâche
+
+image::image245.png[image,width=39,height=15] : Type de bloc ‘départ’ permettant de définir le point de départ du worklow
+
+image::image246.png[image,width=39,height=16] : Type de bloc ‘stop’, permettant de définir le point d’arrêt (fin) du workflow
+
+L’ajout d’une nouvelle tâche se fait pas glissé/déposé d’un bloc depuis la bibliothèque située à gauche vers la zone d’édition située à droite.
+
+image::image247.png[image,width=428,height=344]
+
+Une fois le ou les blocs déposés, leur représentation graphique apparaît selon leur type :
+
+Types de blocs ‘**start**’ ou ‘**stop**’ :
+
+image::image248.png[image,width=128,height=71]
+
+Types de blocs ‘**Accept/Reject’**, ‘**Approve**’, ‘**Simple task’** ou ‘**node**’ :
+
+image::image249.png[image,width=253,height=88]
+
+Types de blocs ‘**fork 2 ways’**, ‘**fork 3 ways’** :
+
+image::image250.png[image,width=86,height=55]
+
+Type de bloc ‘**merge**’ :
+
+image::image251.png[image,width=46,height=55]
+
+Vous pouvez donc rapidement déposer différents blocs pour concevoir votre Workflow, à noter que les blocs ‘start’ et ‘stop’ sont obligatoires dans un processus.
+
+image::image252.png[image,width=394,height=405]
+
+Une fois les blocs déposés, vous pouvez les relier entre eux en cliquant sur les points rouges image::image253.png[image,width=11,height=10]situés sur chaque bloc. Une flèche de liaison apparaît vous permettant de relier 2 tâches entre elles, pour cela cliquez (gauche), maintenez le clic et déplacer la flèche de liaison vers le point de liaison sur l’étape suivante :
+
+image::image254.png[image,width=244,height=177] image::image255.png[image,width=233,height=164]
+
+Procédez ainsi entre chaque bloc afin de créer un circuit complet et cohérent permettant à un document de ‘circuler’ dans un flux. Dans le cas de bloc composés de plusieurs entrées (merge) ou plusieurs sorties (forks ou accept/reject), pensez à gérer tous les liens, par exemple un retour à l’étape précédent en cas de refus, une répartition de l’information sur 2 ou 3 tâches dans le cas d’une ‘fourche’…
+
+Une fois la partie ‘graphique’ terminée, pensez à sauvegarder votre workflow en cliquant sur le bouton image::image256.png[image,width=50,height=21] situé en bas à droite de la zone d’édition.
+
+image::image257.png[image,width=433,height=361]
+
+Chaque étape peut alors être paramétrée de façon précise en cliquant sur le bouton d’édition image::image258.png[image,width=16,height=15] apparaissant lors du passage de la souris sur le bloc à éditer :
+
+image::image259.png[image,width=95,height=70]
+
+image::image260.png[image,width=495,height=325]
+
+*Détail de l’onglet « Général » :*
+
+**Title** : Correspond au nom de l’étape
+
+**Node Id** : Non modifiable, référence technique de l’objet
+
+**Directive **: Correspond au texte d’informations destiné au destinataire de la tâche. Ce texte apparaîtra dans l’application et également dans le mail dans le cas d’utilisation de mails personnalisés.
+
+**Due date expression** : Correspond à la date d’échéance de la tâche. Ce champ est paramétré sous la forme d’une expression MVEL, pour modifier le contenu il est recommandé d’utiliser l’assistant disponible en cliquant sur le bouton présent en bout de zone image::image261.png[image,width=24,height=23]
+
+image::image262.png[image,width=336,height=230] image::image263.png[image,width=332,height=226]
+
+Cet assistant va permettre de générer automatiquement l’expression MVEL en fonction des choix effectués dans les 2 menus déroulants. Pour plus d’informations concernant ce langage de Scripting, voir le contenu de ce site http://mvel.codehaus.org/Language+Guide+for+2.0[_http://mvel.codehaus.org/Language+Guide+for+2.0_], ou utilisez le lien « Online help » disponible depuis l’écran de l’assistant.
+
+**Assignees** : Permet de spécifier les destinataires de la tâche. Il peut s’agir d’un utilisateur seul, dans ce cas la syntaxe sera la suivante [user:code_utilisateur], ou un groupe et cette fois la syntaxe sera [group :nom_du_groupe], pour cumuler les destinataires utilisez la fonction image::image264.png[image,width=32,height=14]
+
+image::image265.png[image,width=346,height=58]
+
+**Compute additionnal assignees** : Cette zone permet de définir des critères beaucoup plus poussés pour affecter des utilisateurs. Par exemple en fonction du nom du document, de son type, du répertoire dans le lequel il se trouve…etc Ce paramétrage est réalisé là encore par la création d’un script MVEL. Un assistant est également disponible ainsi qu’une aide en ligne.
+
+**Grant permission to task assignees** : Permet d’octroyer temporairement et uniquement dans le contexte de la tâche courante des droits spécifiques au destinataire. Ainsi un utilisateur peut temporairement disposer de droits plus ou moins élevés qui seront automatiquement réinitialisés aux droits d’origine dès que la tâche sera passée.
+
+**Mail notification** : Permet d’indiquer si la tâche est accompagnée d’une notification par mail. Si le champ est vide, aucun mail n’est envoyé, seule l’onglet « Workflow » de l’application permettra à l’utilisateur de voir la liste des tâches auxquelles il est assigné. Si maintenant un modèle est choisi, un mail sera envoyé et le contenu de celui-ci dépendra du paramétrage réalisé dans le modèle.
+
+**Task Document type** : Non développé dans ce document.
+
+**Automation chains** : Les ‘automation chains’ correspondent à des mécanismes automatiques permettant de réaliser un traitement particulier de la donnée. Par exemple, un changement d’état, la génération d’un code, l’envoi d’un mail, le calcul d’une ou plusieurs zones… Les ‘automation chains’ les plus couramment utilisées dans les Workflow sont des changements d’états. Ces mécanismes peuvent alors être appelés depuis chaque tâche, soit en pré traitement [input operation chain] (entrée de la tâche), soit en post traitement [outpout operation chain] (sortie de la tâche).
+
+image::image266.png[image,width=312,height=159]
+
+**Allows incoming connections** : Par défaut cette case est cochée et permet à une tâche d’être reliée à une autre en entrée. Si décochée, il n’est plus possible de se connecter en entrée d’une tâche, c’est le cas par exemple de la tâche ‘start’ qui n’autorise que des connexions de sortie.
+
+**Détail de l’onglet « Variables »** :
+
+image::image267.png[image,width=483,height=219]
+
+Cet onglet permet d’ajouter des variables locales propres à la tâche. En clair il s’agit de zones d’informations supplémentaires portées uniquement par la tâche. Elles permettent de gérer des données contextuelles, comme par exemple un commentaire propre à la tâche. L’ajout d’une nouvelle variable se paramètre de la même façon qu’une nouvelle zone dans un schéma (voir paragraphe sur les schémas).
+
+Cette variable sera disponible dans l’onglet suivant « Form » qui permet la gestion des écrans spécifiques aux tâches.
+
+**Détail de l’onglet « Form »** :
+
+Cet onglet permet de définir les champs à afficher à l’écran lors de la réception d’une tâche. Cet écran ne s’appuie uniquement que sur les variables, qu’ils s’agissent de variables locales ou de variables du workflow, il n’est donc pas possible d’accéder directement aux zones des différents schémas.
+
+image::image268.png[image,width=588,height=418]
+
+Pour gérer des zones issues des documents, il est nécessaire de réaliser des traitements préalables à l’aide ‘d’automation chains’ afin de ‘remplir’ des variables locales ou des variables du workflow automatiquement.
+
+C’est également dans cet écran que peuvent être personnalisés le nom des boutons présents dans l’application.
+
+L’**id** correspond au libellé technique (utilisé dans le dernier onglet « Transitions ») et le *Label* correspond au libellé utilisateur.
+
+image::image269.png[image,width=422,height=302]
+
+**Détail de l’onglet « Transitions »** :
+
+Dans ce dernier onglet sont gérés les ‘transitions’, c’est-à-dire les évènements découlant d’une action utilisateur : par exemple si l’utilisateur clique sur le bouton « Validé », une automation chain entrainant un changement d’état va s’exécuter. Le ‘name’ correspond au nom de la transition, la ‘Condition’ permet de faire le lien avec le nom du bouton défini dans l’onglet « Form » et la ‘Chain’ permet d’appeler une automation qui gérera le changement d’état automatique.
+
+image::image270.png[image,width=424,height=302]
+
+[[autres-fonctionnalités-studio]]
+== Autres fonctionnalités « Studio »
+
+D’autres fonctionnalités Studio sont disponibles et seront rapidement présentées dans la mesure où toutes ne sont pas utilisables ou nécessitant des compétences de développement.
+
+**Rubrique « Advanced Settings »** :
+
+image::image271.png[image,width=159,height=80]
+
+Utilisation réservée à des développeurs ou administrateurs N.2
+
+**Rubrique « Roles & Permissions »** :
+
+image::image272.png[image,width=132,height=60]
+
+Fonctionnalité non exploitée dans l’application à ce jour, ne pas effectuer de modifications
+
+**Rubrique « Templates »** :
+
+image::image273.png[image,width=155,height=54]
+
+Seule la thématique « Mail Templates » peut-être utilisée, elle contient l’ensemble des modèles de mails qui pourront être exploités à différents niveaux dans l’application et plus particulièrement au niveau des Workflows. Un « template » correspond à un texte de notification constitué d’un ensemble de mots ou d’expressions MVEL permettant de récupérer des données contextuelles.
+
+image::image274.png[image,width=711,height=147]
+
+**Rubrique « Automation »** :
+
+image::image275.png[image,width=136,height=76]
+
+Dans cette rubrique, plusieurs thématiques sont disponibles :
+
+* User Actions : Correspond au paramétrage des boutons disponibles dans l’application et faisant appels à des mécanismes (Automation Chains)
+
+____________________________________________________________________
+image::image276.png[image,width=247,height=151]
+____________________________________________________________________
+
+* Automation Chains : Permet le paramétrage de mécanismes de traitement de la donnée (calculs, notifications, changement d’états…)
+
+____________________________________________________________________
+image::image277.png[image,width=247,height=160]
+____________________________________________________________________
+
+* Event Handler : Permet le paramétrage de déclencheurs. Ces déclencheurs vont pouvoir exécuter une automation en fonction d’un évènement défini (par ex. un Event Handler ‘surveille’ une zone et dès que celle-ci est modifiée, un évènement déclencheur lance une action.
+
+____________________________________________________________________
+image::image278.png[image,width=258,height=165]
+____________________________________________________________________
+
+**Rubrique « Branding »** :
+
+image::image279.png[image,width=64,height=18]
+
+Le ‘branding’ permet de personnaliser le thème général de l’application (logo, page d’acceuil), cependant cette fonctionnalité Studio n’est pas compatible avec les développements réalisés pour mettre en œuvre l’application PLIM__. Il est donc fortement déconseillé de paramétrer un nouveau Branding spécifique sous peine de rendre l’application inopérante__.
+
+**Rubrique « Resources »** :
+
+image::image280.png[image,width=72,height=16]
+
+La rubrique ‘resources’ permet d’ajouter des éléments externes à l’application afin de l’enrichir, comme par exemple des fichiers de langues, des images, ou des modèles de widgets…
+
+Il faut principalement retenir que cette rubrique permet de gérer les fichiers de langues, c’est-à-dire la traduction des libellés techniques apparaissant à de nombreuses reprises dans l’application.
+
+La gestion des fichiers de langue est réalisée au travers du menu ‘l18n Files’ :
+
+image::image281.png[image,width=627,height=270]
+
+Le fichier doit être nommé selon la langue en respectant la syntaxe suivante : messages_[langue].properties . Autant de fichiers doivent être construits que de langues à gérer dans l’application :
+
+image::image282.png[image,width=174,height=85]
+
+Le contenu de chaque fichier doit ensuite être construit de la façon suivante :
+
+[Libellé technique] = [libellé utilisateur traduit dans la langue du fichier]
+
+*Ex.1* dans un fichier en français : (messages_fr.properties)
+
+32659=Produit fini
+
+32660=Matière première
+
+32661=Composant de matière première
+
+*Ex.2* dans un fichier en anglais : (messages_en.properties)
+
+32659=End Product
+
+32660=Raw material
+
+32661=Product ingredient
+
+Chaque fichier doit enfin être téléchargé sur le serveur en cliquant sur « Choisissez un fichier » et ‘upload’.
+
+1.  [[administration-de-la-reprise-de-données]]
+= Administration de la reprise de données :
+a.  [[concepts-et-principe-général-de-la-reprise]]
+== Concepts et principe général de la reprise :
+
+La reprise de données est basée sur l’utilisation de fichiers CSV dont le contenu peut-être mis en forme et géré à l’aide d’un tableur tel qu’Excel.
+
+Ces fichiers contiennent des références aux zones à mettre à jour dans l’outil, il est ensuite nécessaire de compléter le fichier avec les données à reprendre en respectant quelques règles définies dans le paragraphe ci-dessous.
+
+a.  [[paramétrage-des-fichiers-de-reprise-de-données]]
+== Paramétrage des fichiers de reprise de données :
+a.  Préparer le fichier de reprise de données
+
+Le fichier se prépare dans Excel mais au final doit être importé au format CSV dans le PLIM :
+
+image::image283.png[image,width=680,height=107]
+
+Le fichier a une structure imposée pour les 2 premières lignes et pour les 3 premières colonnes.
+
+image::image284.png[image,width=680,height=314]
+
+La 1ère ligne est obligatoire pour les titres des colonnes : les titres servent juste à aider la saisie du fichier, ils ne sont nullement exploités par le PLIM lors de l'importation
+
+La 2ème ligne est obligatoire : elle sert à indiquer à l'outil avec quelle donnée du PLIM la colonne doit être mappée. Si la cellule est vide sur une des colonnes du fichier alors la colonne est ignorée et n'est pas importée
+
+La Colonne A est obligatoire : pour indiquer le type d'article à créer ou à modifier
+
+La Colonne B est obligatoire : il faut saisir C pour demander une création (le PLIM vérifie à l'importation que le code article n'existe pas déjà) ou M pour demander une modification (le PLIM vérifie à l'importation que le code article existe déjà
+
+La Colonne C est obligatoire : le code article (vig:code doit avoir été saisi sur la ligne 2 de cette colonne)
+
+Toutes les autres colonnes et lignes contiennent les données à reprendre Voir fichier "ExempleFichierRepriseDonnees.xls" ci-joint pour avoir un exemple de format de fichier correct (restant ensuite à exporter en CSV).
+
+a.  Saisir les informations dans le tableau :
+
+Le format va dépendre du type de la donnée dans le schéma, il est donc nécessaire de contrôler le format attendu pour chaque zone à reprendre.
+
+Se positionner dans Studio sur la layout qui contient la donnée. Cliquer sur "edit this widget" : dans le champ "Field" est indiquer "nomschéma:nomchamp"
+
+image::image286.png[image,width=627,height=109]
+
+image::image287.png[image,width=309,height=198]
+
+Aller dans le schéma en question : vous verrez en haut de l'écran à droite de la zone Name la zone Prefix qui est le préfixe du schéma.
+
+image::image288.png[image,width=443,height=302]
+
+Quel que soit le type de la donnée, saisissez dans la ligne de la colonne en question prefix:nomchamp (exemple vig:code pour le code produit).
+
+Pour les zones simples, le travail est terminé vous pouvez passer à la colonne suivante. Une zone est dite "simple" si elle n'est pas de type "Complex" et/ou Multi-Valued dans le schéma en question.
+
+* Pour les zones "Complex" et non "Multi-Valued", il faut rajouter le caractère / puis le nom du sous-champ.
+* Pour les zones "Multi-Valued" et non "Complex", prefix:nomchamp suffit (les données sont saisies dans une même et seule colonne avec le séparateur | entre chaque valeur
+* Pour les zones "Complex" et "Multi-Valued", il faut rajouter [indice] puis . puis le nom du sous-champ. L'indice indique le numéro dans la liste de la donnée et doit commencer à 1.
+
+**Attention** : pour certaines zones il est nécessaire de bien alimenter les différents sous-champs du type complexe. Par exemple vit:longTradeLabel[1]/translation pour le libellé UL long (voir Colonne P). Mais voir aussi que cela nécessite de rajouter une colonne Q mappée sur vit:longTradeLabel[1]/lang pour dire que le libellé long en question est en français.
+
+a.  Importer les données dans l’application :
+
+Le format de fichier d'import du PLIM est le CSV (nous préconisons l'encodage en UTF-8 du fichier pour prévenir les problèmes d'accents). Si votre fichier Excel de base a plusieurs feuilles, cela fera autant de fichiers CSV à générer et importer.
+
+Une fois votre fichier CSV obtenu, il faut se positionner dans le répertoire de l'espace de travail du PLIM où vous voulez réaliser l'importation (les articles créés seront créés dans le répertoire courant, les articles modifiés seront retrouvés grâce à leur code et resteront à leur emplacement)
+
+Cliquer sur « Nouveau Document » :
+
+image::image289.png[image,width=114,height=25]
+
+Choisir « Document d'import » :
+
+image::image290.png[image,width=550,height=128]
+
+Mettre le libellé que vous souhaitez pour le document d'import et sélectionner le fichier CSV à importer puis valider la création.
+
+image::image291.png[image,width=697,height=232]
+
+Cliquer enfin sur la première icône en haut à droite importer les éléments à partir du fichier) pour lancer réellement l'importation des lignes contenues dans le fichier CSV.
+
+image::image292.png[image,width=697,height=392]
+
+Une fois le traitement terminé un sous-répertoire est créé dans le répertoire courant, il suffit de s'y rendre pour consulter le compte rendu complet (ligne par ligne) de l'importation.
+
+image::image293.png[image,width=697,height=392]
+
+1.  [[administration-des-templates]]
+= Administration des ‘TEMPLATES’ :
+a.  [[concepts-et-principe-général-de-la-génération-documentaire]]
+== Concepts et principe général de la génération documentaire :
+
+Le « template rendering » ou encore génération documentaire, restitutions… consiste à créer un modèle de document dans lequel vont être définis des « champs de fusions », c’est-à-dire des zones destinées à recevoir automatiquement de l’information en provenance de la base de données PLIM.
+
+Un « moteur » est ensuite capable de fusionner les données issues du PLIM avec un de ces modèle, générant ainsi un document dont le contenu aura été entièrement complété automatiquement à partir des informations souhaitées.
+
+Les applications concrètes et directes sont la mise en place de modèles de fiches techniques, de fiches logistiques, de cahier des charges… Une fois le paramétrage de ces modèles réalisé, l’utilisateur peut générer instantanément un document contenant les informations sans avoir à les ressaisir…
+
+a.  [[paramétrage-des-modèles-de-génération-documentaire]]
+== Paramétrage des modèles de génération documentaire :
+a.  Concevoir le modèle :
+
+Le prérequis au paramétrage de ce type de document est de disposer d’une suite Office (Word, Excel) au minimum version 2007. Les versions antérieures (97, 2000, 2003…) ne disposent pas de cette fonctionnalité.
+
+Le principe général est relativement simple, puisqu’il consiste à déposer des zones spécifiques dans un document, zones qui seront interprétées et reconnues par le moteur du PLIM :
+
+Ce type de zones est appelée « champ de fusion », disponible dans la rubrique « QuickPart » du bandeau Office, menu « Champ… »
+
+image::image294.png[image,width=680,height=140]
+
+L’écran suivant apparaît alors :
+
+image::image295.png[image,width=627,height=358]
+
+Sélectionnez à gauche le type « ChampFusion »
+
+Dans le nom du champ saisissez la valeur à insérer (cf. paragraphe suivant pour détails)
+
+Cliquez sur OK
+
+Le champ apparaît alors en surbrillance (fond gris) indiquant que la zone est valide
+
+image::image296.png[image,width=224,height=28]
+
+Procédez ainsi sur l’ensemble du document pour toutes les zones que vous souhaitez faire apparaître dans le document :
+
+image::image297.png[image,width=680,height=461]
+
+Il existe 2 grands types de champs :
+
+* Ceux préfixés par \{doc. correspondent directement à des zones du document (objet)
+* Ceux préfixés par \{plimfunctions. correspondent à des fonctions avancées permettant d’aller récupérer des informations stockées dans un vocabulaire (liste), sur un autre objet (cas d’emploi, composition…). Ces fonctions permettent ainsi de ‘remonter’ ou ‘descendre’ en partant de l’objet édité vers d’autres objets ayant un lien vers l’objet courant.
+
+La syntaxe à respecter pour une zone est donc la suivante : \{doc.NomDuSchema.NomDeLaZone}
+
+**Exemple** : pour récupérer dans le document la valeur du champ « Code Externe », il faut donc saisir cette chaîne dans le champ de fusion : \{doc.vItemGeneral.extCode}
+
+Pour les fonctions, il est recommandé d’utiliser les modèles standards prés paramétrés et de reprendre les informations saisies.
+
+Par exemple, la fonction de récupération d’une zone multilingue se présentera ainsi :
+
+\{plimfunctions.getLocalizedValueFromProperty("vItemGeneral","legacyTradeName","lang","translation","fr")!}
+
+Il suffit pour cela de se positionner sur le champ intéressant et d’effectuer un clic droit puis « Modification du champ »
+
+image::image298.png[image,width=340,height=292]
+
+La donnée est alors récupérable par simple copier/coller depuis l’édition du champ :
+
+image::image299.png[image,width=627,height=336]
+
+De nombreux exemples sont disponibles dans les modèles mis à votre disposition lors des formations, cela évite d’avoir à saisir intégralement la chaîne de valeurs.
+
+a.  Intégrer le modèle dans l’application :
+
+Une fois votre modèle paramétré, il va être nécessaire de le charger dans l’application de façon à le rendre utilisable par les utilisateurs :
+
+Dans le répertoire de stockage de vos modèles cliquez sur « Nouveau », choisissez le type « modèle » :
+
+image::image300.png[image,width=627,height=350]
+
+L’écran suivant apparaît :
+
+image::image301.png[image,width=627,height=351]
+
+**Titre** : Donnez un titre à votre modèle
+
+**Description** : Indiquez une description plus complète
+
+**Mode expert** : Sélectionnez le « Mode Expert » pour accéder au menu avancé
+
+**Nature** : Uniquement informative, elle n’a aucun effet sur le moteur et sert uniquement à classifier les documents.
+
+**Rendu** : Ne doit pas être modifié, laissez la valeur « Aucune » par défaut
+
+**Types de document pour lesquels ce modèle est disponible** : Permet de spécifier les documents sur lesquels le modèle sera disponible, choix multiple.
+
+**Types de documents automatiquement associés à ce modèle** : Permet de gérer l’association automatique du modèle à chaque nouveau document créé. Ne s’applique que sur les nouveaux documents créés après application du paramétrage.
+
+**Autoriser la surcharge des paramètres** : Ne pas modifier, laissez la case décochée
+
+**Le modèle est éditable sur le document cible** : Ne pas modifier, laissez la case décochée
+
+**Moteur de génération** : Par défaut laissez la valeur sur « Automatic »
+
+**Format de rendu** : Choisissez le format de sortie désiré (Word, PDF…)
+
+**Contenu** : dans cette zone, sélectionnez le fichier que vous avez paramétré et chargez le.
+
+Une fois sauvegardée, un écran de ce type apparaît :
+
+image::image302.png[image,width=680,height=263]
+
+Cliquez alors sur l’onglet « Configuration du modèle » puis chapitre « Paramètres » et vérifiez la présence de la variable ‘picture’
+
+image::image303.png[image,width=680,height=203]
+
+Le cas échéant, ajoutez là en choisissant : Ajouter un paramètre de type « Image » avec pour valeur de XPath la zone vig:picture
+
+Sur cet écran vous pouvez éventuellement revoir votre paramétrage, par exemple modifier le format de sortie en naviguant dans le chapitre « Configuration »
+
+image::image304.png[image,width=680,height=187]
+
+Dans le dernier chapitre, vous pouvez également visualiser la liste des documents auxquels ont été associé ce modèle (utile en cas de révision du modèle pour évaluer l’impact) :
+
+image::image305.png[image,width=680,height=180]
+
+Si vous avez opté pour une association automatique du modèle, tous les nouveaux documents disposeront automatiquement d’un raccourci sur le panneau de droite permettant de lancer la génération du document :
+
+image::image306.png[image,width=201,height=66]
+
+Pour les anciens documents, ou si l’association automatique n’a pas été activée, il faut alors se rendre dans l’onglet « Modèles associés » :
+
+image::image307.png[image,width=603,height=85]
+
+L’utilisateur peut alors sélectionner manuellement le modèle à associer et ajouter tous les modèles disponibles pour ce type de document.
+
+image::image308.png[image,width=627,height=215]
+
+Depuis cette interface il peut également lancer la génération automatique du rendu en cliquant sur le bouton « Générer le rendu » (équivalent à clic direct sur le raccourci disponible sur la panneau de droite).
+
+[**FIN DU DOCUMENT**]
